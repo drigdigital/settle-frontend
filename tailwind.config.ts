@@ -83,6 +83,8 @@ const config: Config = {
         banner: "70svh",
         "banner-lg": "80svh",
         // Closing CTA band (homepage Section 08).
+        // One screen below the sticky Navbar (h-18 / 4.5rem); svh so mobile browser chrome doesn't resize sections mid-scroll.
+        viewport: "calc(100svh - 4.5rem)",
         cta: "50svh",
         "cta-lg": "55svh",
       },

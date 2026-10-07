@@ -1,116 +1,46 @@
-import Image from "next/image";
-import { Container } from "@/components/shared/Container";
-import { SectionHeading } from "@/components/shared/SectionHeading";
-import { buildMetadata } from "@/lib/seo";
+import { ClosingCta } from "@/components/shared/ClosingCta";
+import { StorySplit } from "@/components/shared/StorySplit";
+import { ABOUT_CTA, ABOUT_HERO, ABOUT_LEADERSHIP, ABOUT_STORIES } from "@/constants/about";
+import { SITE_CONFIG } from "@/constants/site";
+import { breadcrumbSchema, buildMetadata, organizationSchema } from "@/lib/seo";
+import { AboutHero } from "@/sections/about/AboutHero";
+import { AboutLeadership } from "@/sections/about/AboutLeadership";
 
 export const metadata = buildMetadata({
   title: "About Us",
   description:
-    "Vaanam Furniture Private Limited builds Settle Furnitures — seasoned Mahogany and Teak furniture crafted for lasting quality.",
+    "Settle Furniture is a Vaanam Furniture brand, part of the Martin Group, Coimbatore: furniture made in-house for real, lived-in homes across South India.",
   path: "/about",
 });
 
-const LEADERSHIP = [
-  { name: "Leadership Name", role: "Founder & Managing Director" },
-  { name: "Leadership Name", role: "Head of Manufacturing" },
-  { name: "Leadership Name", role: "Head of Design" },
-];
-
+/**
+ * About page: hero → brand story → manufacturing → quality → leadership →
+ * closing CTA, one focused screen each. [data-snap-page] opts this page into
+ * gentle scroll snapping (app/globals.css). Content lives in constants/about.ts.
+ */
 export default function AboutPage() {
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "About", url: `${SITE_CONFIG.url}/about` },
+  ]);
+
   return (
-    <>
-      <section className="relative">
-        <div className="bg-ink/10 relative aspect-21/9 w-full overflow-hidden">
-          <Image
-            src="/images/placeholder.svg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
-      </section>
+    <div data-snap-page>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
 
-      <Container className="py-section">
-        <h1 className="text-ink max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl">
-          Furniture that feels like home from day one.
-        </h1>
-        <p className="text-muted mt-6 max-w-2xl text-lg">
-          Settle Furnitures began with a simple premise: furniture should be built to last, not
-          replaced every few years. Every wardrobe, sofa and dining set we make starts with seasoned
-          Mahogany or Teak and is finished by hand.
-        </p>
-      </Container>
-
-      <section className="border-border bg-surface py-section border-y">
-        <Container className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div className="bg-ink/10 relative aspect-4/3 overflow-hidden rounded-lg">
-            <Image
-              src="/images/placeholder.svg"
-              alt="Settle Furnitures manufacturing facility"
-              fill
-              sizes="50vw"
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <SectionHeading eyebrow="Manufacturing" title="Seasoned wood, built to spec" />
-            <p className="text-muted mt-4">
-              Our manufacturing floor combines traditional joinery with modern finishing, so every
-              piece holds up to daily use without losing the warmth of handcrafted furniture.
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      <Container className="py-section">
-        <SectionHeading eyebrow="Quality" title="Our quality commitment" />
-        <div className="mt-10 grid gap-8 sm:grid-cols-3">
-          {[
-            {
-              title: "Seasoned Hardwood",
-              body: "Mahogany and Teak, seasoned to resist warping and pests.",
-            },
-            {
-              title: "Hand-finished",
-              body: "Every surface is sanded and finished by hand, not machine-only.",
-            },
-            {
-              title: "Quality-checked",
-              body: "Each piece is inspected before it leaves the workshop.",
-            },
-          ].map((item) => (
-            <div key={item.title}>
-              <h3 className="text-ink text-base font-semibold">{item.title}</h3>
-              <p className="text-muted mt-2 text-sm">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </Container>
-
-      <section className="border-border bg-surface py-section border-t">
-        <Container>
-          <SectionHeading eyebrow="Leadership" title="The people behind Settle" />
-          <div className="mt-10 grid gap-8 sm:grid-cols-3">
-            {LEADERSHIP.map((person) => (
-              <div key={person.role}>
-                <div className="bg-ink/10 relative aspect-square overflow-hidden rounded-full">
-                  <Image
-                    src="/images/placeholder.svg"
-                    alt=""
-                    fill
-                    sizes="200px"
-                    className="object-cover"
-                  />
-                </div>
-                <p className="text-ink mt-4 font-medium">{person.name}</p>
-                <p className="text-muted text-sm">{person.role}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-    </>
+      <AboutHero content={ABOUT_HERO} />
+      {ABOUT_STORIES.map((story) => (
+        <StorySplit key={story.id} story={story} />
+      ))}
+      <AboutLeadership content={ABOUT_LEADERSHIP} />
+      <ClosingCta content={ABOUT_CTA} className="snap-start" />
+    </div>
   );
 }

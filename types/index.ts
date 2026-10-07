@@ -8,3 +8,4 @@ export * from "./featuredRange";
 export * from "./partner";
 export * from "./banner";
 export * from "./testimonial";
+export * from "./about";

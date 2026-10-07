@@ -74,12 +74,14 @@ export function ClosingCta({
           >
             {heading}
           </motion.h2>
-          <motion.p
-            variants={fadeUp}
-            className="text-paper/80 mx-auto mt-5 max-w-2xl text-base text-balance sm:text-lg"
-          >
-            {subtext}
-          </motion.p>
+          {subtext && (
+            <motion.p
+              variants={fadeUp}
+              className="text-paper/80 mx-auto mt-5 max-w-2xl text-base text-balance sm:text-lg"
+            >
+              {subtext}
+            </motion.p>
+          )}
           <motion.div variants={fadeUp} className="mt-10">
             <CtaLinks primary={primaryCta} secondary={secondaryCta} align="center" />
           </motion.div>

@@ -36,7 +36,7 @@ export interface ImmersiveBannerContent {
 export interface ClosingCtaContent {
   eyebrow?: string;
   heading: string;
-  subtext: string;
+  subtext?: string;
   primaryCta: BannerLink;
   secondaryCta?: BannerLink;
   /** Optional background photo, shown faintly under a 90% navy overlay. Omit for solid navy with gold accents. */

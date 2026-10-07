@@ -87,6 +87,18 @@ body {
   --focus-ring-color: var(--color-gold);
 }
 
+/*
+ * Opt-in one-section-per-scroll: a page that renders an element with
+ * [data-snap-page] gets gentle vertical snapping to its snap-start sections.
+ * Proximity, not mandatory, so a section taller than the screen (common on
+ * phones) still scrolls freely instead of trapping or skipping content. The
+ * padding lands each section just below the sticky Navbar (h-18).
+ */
+:root:has([data-snap-page]) {
+  scroll-snap-type: y proximity;
+  scroll-padding-top: --spacing(18);
+}
+
 /* Pauses a running CSS animation (e.g. group-hover:animate-paused on a marquee). */
 @utility animate-paused {
   animation-play-state: paused;
