@@ -1,55 +1,60 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Container } from "@/components/shared/Container";
+import { LogoMarquee } from "@/components/shared/LogoMarquee";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { StarIcon } from "@/components/ui/icons";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-import type { Testimonial } from "@/types/admin";
+import { TestimonialCarousel } from "@/components/shared/TestimonialCarousel";
+import {
+  CLIENT_LOGOS,
+  TESTIMONIALS_AUTOPLAY_MS,
+  TESTIMONIALS_CONTENT,
+} from "@/constants/testimonials";
+import { cn } from "@/utils/cn";
+import type { Testimonial } from "@/types/testimonial";
 
+const HEADING_ID = "testimonials-heading";
+const LOGOS_LABEL_ID = "partner-logos-label";
+
+/**
+ * Homepage Section 07 — testimonial carousel above a partner logo marquee.
+ * Testimonials come from getFeaturedTestimonials() (services/testimonials.ts);
+ * copy and logos live in constants/testimonials.ts. Either half hides when
+ * its data is empty; the section hides when both are.
+ */
 export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
-  if (testimonials.length === 0) return null;
+  const logos = CLIENT_LOGOS;
+  const hasTestimonials = testimonials.length > 0;
+  if (!hasTestimonials && logos.length === 0) return null;
+
+  const { eyebrow, heading, logoStripLabel } = TESTIMONIALS_CONTENT;
 
   return (
-    <section className="py-section">
+    <section
+      aria-labelledby={hasTestimonials ? HEADING_ID : LOGOS_LABEL_ID}
+      className="bg-cream py-section-sm lg:py-section"
+    >
       <Container>
-        <SectionHeading
-          align="center"
-          eyebrow="Testimonials"
-          title="What our customers say"
-          className="mx-auto"
-        />
+        {hasTestimonials && (
+          <TestimonialCarousel
+            testimonials={testimonials}
+            autoplayMs={TESTIMONIALS_AUTOPLAY_MS}
+            header={
+              <SectionHeading
+                id={HEADING_ID}
+                eyebrow={eyebrow}
+                title={heading}
+                align="center"
+                tone="navy"
+                className="text-balance"
+              />
+            }
+          />
+        )}
 
-        <motion.div
-          variants={staggerContainer(0.1)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {testimonials.map((testimonial) => (
-            <motion.figure
-              key={testimonial._id}
-              variants={fadeUp}
-              className="bg-surface shadow-soft rounded-lg p-6"
-            >
-              <div className="text-accent flex gap-1" aria-hidden="true">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <StarIcon key={index} filled={index < testimonial.rating} />
-                ))}
-              </div>
-              <blockquote className="text-ink mt-4 text-sm">
-                &ldquo;{testimonial.quote}&rdquo;
-              </blockquote>
-              <figcaption className="text-muted mt-4 text-sm font-medium">
-                {testimonial.name}
-                {testimonial.location && (
-                  <span className="font-normal"> · {testimonial.location}</span>
-                )}
-              </figcaption>
-            </motion.figure>
-          ))}
-        </motion.div>
+        <LogoMarquee
+          logos={logos}
+          label={logoStripLabel}
+          labelId={LOGOS_LABEL_ID}
+          className={cn(hasTestimonials && "border-navy/10 mt-14 border-t pt-12 lg:mt-20 lg:pt-14")}
+        />
       </Container>
     </section>
   );

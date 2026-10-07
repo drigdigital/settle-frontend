@@ -2,6 +2,19 @@
 @config "../tailwind.config.ts";
 
 /*
+ * `card-rest:` — applies only while a `group/card` is neither hovered nor
+ * focused, on hover-capable desktop screens. Used to tuck card details away
+ * until hover/focus; touch devices and smaller screens always see them.
+ */
+@custom-variant card-rest {
+  @media (min-width: theme(screens.lg)) and (hover: hover) and (pointer: fine) {
+    &:where(.group\/card:not(:hover, :focus-within) *) {
+      @slot;
+    }
+  }
+}
+
+/*
  * BRAND PALETTE — derived from the approved Settle logo (public/settle-logo.png).
  * --color-primary (#f5821f) is pixel-sampled directly from the logo's orange
  * rays. The logo itself is a two-tone mark (that orange + white) with no
@@ -17,12 +30,40 @@
   --color-muted: #6b6259;
   --color-border: #e4ddd3;
   --color-surface: #ffffff;
+  /* Warmer off-white than paper, for alternating homepage section bands. Neutral, not a brand color. */
+  --color-linen: #f7f3ec;
   --color-primary: #f5821f;
   --color-primary-foreground: var(--color-ink);
   --color-accent: #a0520d;
   --color-accent-foreground: var(--color-paper);
   --color-danger: #b3261e;
   --color-success: #2e6b3e;
+
+  /*
+   * PARTNER PALETTE — navy / gold / warm off-white, specified by the client
+   * for the retailer & dealer band (homepage Section 05), echoing the theme's
+   * About / Partner pages. gold-light is the hover fill; gold-deep is gold
+   * darkened along the same hue for text on cream (plain gold is only 2.6:1).
+   * WCAG 2.1 contrast: navy on gold 4.6:1 · navy on gold-light 5.9:1 ·
+   * gold on navy 4.6:1 · navy on cream 11.9:1 · navy/70 on cream 5.0:1 ·
+   * gold-deep on cream 5.4:1.
+   */
+  --color-navy: #1b2a4a;
+  --color-gold: #b08d57;
+  --color-gold-light: #c4a26e;
+  --color-gold-deep: #735b37;
+  --color-cream: #f1eadf;
+
+  /*
+   * WOOD TONES — PLACEHOLDER until the Phase 1 palette is approved. A light
+   * sand → deep walnut ramp used as card backgrounds behind product imagery
+   * (and as the fallback when an image is missing or fails to load).
+   */
+  --color-wood-sand: #d8c3a5;
+  --color-wood-oak: #b8916a;
+  --color-wood-teak: #936640;
+  --color-wood-cherry: #6d4428;
+  --color-wood-walnut: #4a2f1d;
 
   --font-sans: var(--font-geist-sans);
 }
@@ -37,8 +78,32 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--focus-ring-color, var(--color-accent));
   outline-offset: 2px;
+}
+
+/* Switches focus rings inside a navy panel to gold (4.6:1 on navy; accent is too dark there). */
+@utility focus-ring-gold {
+  --focus-ring-color: var(--color-gold);
+}
+
+/* Pauses a running CSS animation (e.g. group-hover:animate-paused on a marquee). */
+@utility animate-paused {
+  animation-play-state: paused;
+}
+
+/*
+ * Faint vertical gold hairlines, like panelling or grain, fading out towards
+ * the edges. Pair with a low opacity (e.g. opacity-10) so text on top keeps contrast.
+ */
+@utility pinstripe-gold {
+  background-image: repeating-linear-gradient(90deg, var(--color-gold) 0 1px, transparent 1px 6rem);
+  mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+}
+
+/* Fades content out at the left and right edges (logo marquee). Mask alpha only, not a colour. */
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

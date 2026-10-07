@@ -1,5 +1,4 @@
-import { getFeaturedProducts } from "@/services/products";
-import { getAllCategories } from "@/services/categories";
+import { getFeaturedRange } from "@/services/featuredRange";
 import { getFeaturedTestimonials } from "@/services/testimonials";
 import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/sections/home/Hero";
@@ -19,9 +18,8 @@ export const metadata = buildMetadata({
 });
 
 export default async function HomePage() {
-  const [featuredProducts, categories, testimonials] = await Promise.all([
-    getFeaturedProducts(),
-    getAllCategories(),
+  const [rangeProducts, testimonials] = await Promise.all([
+    getFeaturedRange(),
     getFeaturedTestimonials(),
   ]);
 
@@ -29,8 +27,8 @@ export default async function HomePage() {
     <>
       <Hero />
       <ValueStrip />
-      <FeaturedCollections categories={categories} />
-      <FeaturedProductsCarousel products={featuredProducts} />
+      <FeaturedCollections />
+      <FeaturedProductsCarousel products={rangeProducts} />
       <B2BHighlight />
       <ExperienceCenterPreview />
       <Testimonials testimonials={testimonials} />

@@ -1,22 +1,27 @@
 import { Schema, model, models, type Model, type Document } from "mongoose";
+import type { TestimonialType } from "@/types/testimonial";
 
 export interface TestimonialDocument extends Document {
-  name: string;
-  location?: string;
   quote: string;
-  rating: number;
-  avatar?: string;
+  name: string;
+  role: string;
+  type: TestimonialType;
+  product?: string;
+  rating?: number;
+  photo?: string;
   isFeatured: boolean;
   createdAt: Date;
 }
 
 const TestimonialSchema = new Schema<TestimonialDocument>(
   {
-    name: { type: String, required: true },
-    location: String,
-    quote: { type: String, required: true },
-    rating: { type: Number, min: 1, max: 5, required: true },
-    avatar: String,
+    quote: { type: String, required: true, trim: true },
+    name: { type: String, required: true, trim: true },
+    role: { type: String, required: true, trim: true },
+    type: { type: String, enum: ["dealer", "customer"], required: true },
+    product: { type: String, trim: true },
+    rating: { type: Number, min: 1, max: 5 },
+    photo: String,
     isFeatured: { type: Boolean, default: false, index: true },
   },
   { timestamps: { createdAt: true, updatedAt: false } },

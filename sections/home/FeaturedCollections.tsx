@@ -1,62 +1,40 @@
-"use client";
-
 import Link from "next/link";
-import Image from "next/image";
-import { motion } from "framer-motion";
+import { CardRail } from "@/components/shared/CardRail";
 import { Container } from "@/components/shared/Container";
 import { SectionHeading } from "@/components/shared/SectionHeading";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
-import type { Category } from "@/types/product";
+import { ShowcaseCard } from "@/components/shared/ShowcaseCard";
+import { ChevronRightIcon } from "@/components/ui/icons";
+import { SHOWCASE_CONTENT, SHOWCASE_ITEMS } from "@/constants/showcase";
 
-export function FeaturedCollections({ categories }: { categories: Category[] }) {
+const CARD_SIZES = "(min-width: 1024px) 20vw, (min-width: 640px) 40vw, 80vw";
+
+/** Homepage Section 03 — best-seller showcase. Content lives in constants/showcase.ts. */
+export function FeaturedCollections() {
+  const { heading, subtext, viewAll } = SHOWCASE_CONTENT;
+
   return (
-    <section className="py-section">
+    <section className="py-section-sm lg:py-section">
       <Container>
-        <SectionHeading
-          eyebrow="Collections"
-          title="Every room, considered"
-          description="From wardrobes to dining, browse the full catalog by category."
-        />
-
-        <motion.div
-          variants={staggerContainer(0.08)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
-        >
-          {categories.slice(0, 8).map((category) => (
-            <motion.div key={category.slug} variants={fadeUp}>
-              <Link
-                href={`/collections?category=${category.slug}`}
-                className="group bg-ink/5 block overflow-hidden rounded-lg"
-              >
-                <div className="relative aspect-square overflow-hidden">
-                  <Image
-                    src={category.heroImage ?? "/images/placeholder.svg"}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 25vw, 50vw"
-                    className="object-cover transition-transform duration-400 group-hover:scale-105"
-                  />
-                  <div className="bg-ink/20 group-hover:bg-ink/30 absolute inset-0 transition-colors duration-300" />
-                  <p className="text-paper absolute bottom-4 left-4 text-sm font-medium">
-                    {category.name}
-                  </p>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <div className="mt-10 text-center">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+          <SectionHeading title={heading} description={subtext} className="text-balance" />
           <Link
-            href="/collections"
-            className="text-ink text-sm font-medium underline underline-offset-4"
+            href={viewAll.href}
+            className="text-ink inline-flex shrink-0 items-center gap-1 text-sm font-medium underline underline-offset-4"
           >
-            View all collections
+            {viewAll.label}
+            <ChevronRightIcon className="size-4" />
           </Link>
         </div>
+
+        <CardRail
+          label="Best sellers"
+          itemLabels={SHOWCASE_ITEMS.map((item) => item.name)}
+          className="mt-10"
+        >
+          {SHOWCASE_ITEMS.map((item) => (
+            <ShowcaseCard key={item.id} item={item} sizes={CARD_SIZES} />
+          ))}
+        </CardRail>
       </Container>
     </section>
   );

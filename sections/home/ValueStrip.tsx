@@ -1,46 +1,15 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { Container } from "@/components/shared/Container";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import { SectionHeading } from "@/components/shared/SectionHeading";
+import { ValueGrid } from "@/components/shared/ValueGrid";
+import { BRAND_VALUES, BRAND_VALUES_HEADING } from "@/constants/values";
 
-const VALUES = [
-  {
-    title: "Seasoned Hardwood",
-    description: "Mahogany and Teak, kiln-seasoned for lasting stability.",
-  },
-  {
-    title: "Made to Order",
-    description: "Every piece is built for you — finish, size, and configuration.",
-  },
-  {
-    title: "Bulk & Dealer Ready",
-    description: "Volume pricing and a dedicated process for B2B orders.",
-  },
-  {
-    title: "Showroom Experience",
-    description: "See and feel the craftsmanship before you decide.",
-  },
-];
-
+/** Homepage Section 02 — brand value strip directly under the hero. Content lives in constants/values.ts. */
 export function ValueStrip() {
   return (
-    <section className="border-border bg-surface py-section-sm border-y">
+    <section className="bg-paper py-section-sm lg:py-section">
       <Container>
-        <motion.div
-          variants={staggerContainer(0.1)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {VALUES.map((value) => (
-            <motion.div key={value.title} variants={fadeUp}>
-              <h3 className="text-ink text-base font-semibold">{value.title}</h3>
-              <p className="text-muted mt-2 text-sm">{value.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
+        <SectionHeading title={BRAND_VALUES_HEADING} align="center" className="text-balance" />
+        <ValueGrid values={BRAND_VALUES} className="mt-10 lg:mt-12" />
       </Container>
     </section>
   );
