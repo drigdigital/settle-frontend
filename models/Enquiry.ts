@@ -14,6 +14,10 @@ export interface EnquiryDocument extends Document {
   visitorCount?: string;
   businessType?: string;
   yearsInBusiness?: string;
+  industry?: string;
+  productCategories?: string;
+  estimatedQuantity?: string;
+  deliveryTimeline?: string;
   source: { productId?: string; productName?: string; productSlug?: string; page: string };
   status: "new" | "contacted" | "qualified" | "converted" | "closed";
   assignedDepartment: "sales" | "b2b" | "dealer-relations" | "experience-center" | "support";
@@ -41,6 +45,10 @@ const EnquirySchema = new Schema<EnquiryDocument>(
     visitorCount: String,
     businessType: String,
     yearsInBusiness: String,
+    industry: String,
+    productCategories: String,
+    estimatedQuantity: String,
+    deliveryTimeline: String,
     source: {
       productId: String,
       productName: String,

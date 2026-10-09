@@ -1,61 +1,65 @@
+import { ClosingCta } from "@/components/shared/ClosingCta";
+import { PRODUCTS_CATALOG, PRODUCTS_CTA, PRODUCTS_HERO } from "@/constants/products";
+import { SITE_CONFIG } from "@/constants/site";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import { ProductCatalog } from "@/sections/products/ProductCatalog";
+import { ProductsHero } from "@/sections/products/ProductsHero";
 import { getAllProducts } from "@/services/products";
-import { getAllCategories } from "@/services/categories";
-import { Container } from "@/components/shared/Container";
-import { CollectionsFilters } from "@/components/shared/CollectionsFilters";
-import { SearchBox } from "@/components/shared/SearchBox";
-import { ProductGrid } from "@/components/shared/ProductGrid";
-import { buildMetadata } from "@/lib/seo";
-import type { ProductFilters } from "@/types/product";
 
 export const metadata = buildMetadata({
-  title: "Collections",
+  title: "Products",
   description:
-    "Browse the full Settle Furnitures catalog — wardrobes, sofas, dining, cots, and more.",
+    "Browse Settle Furniture's featured products: wardrobes, bedroom packages, sofas, cots, dining and center tables, with prices where listed and an enquiry on every piece.",
   path: "/collections",
 });
 
-interface CollectionsPageProps {
+interface ProductsPageProps {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-function toFilters(params: Record<string, string | string[] | undefined>): ProductFilters {
-  const get = (key: string) => {
-    const value = params[key];
-    return Array.isArray(value) ? value[0] : value;
-  };
+/**
+ * Products page (served at /collections, the catalog route in CLAUDE.md §8):
+ * hero → category-filtered product grid → closing CTA. Server-rendered from
+ * the catalog (services/products.ts) for SEO; [data-snap-page] opts into the
+ * site's gentle section snapping. Every product path ends in an enquiry —
+ * there is no cart or checkout.
+ */
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const { category } = await searchParams;
+  const products = await getAllProducts();
 
-  return {
-    category: get("category"),
-    subLine: get("subLine") as ProductFilters["subLine"],
-    material: get("material"),
-    finish: get("finish"),
-    search: get("search"),
-    sort: get("sort") as ProductFilters["sort"],
-  };
-}
+  const mosaic = products.filter((product) => product.images.length > 0).slice(0, 3);
+  const categoryCount = new Set(
+    products.map((product) =>
+      typeof product.category === "string" ? product.category : product.category.slug,
+    ),
+  ).size;
 
-export default async function CollectionsPage({ searchParams }: CollectionsPageProps) {
-  const params = await searchParams;
-  const filters = toFilters(params);
-
-  const [products, categories] = await Promise.all([getAllProducts(filters), getAllCategories()]);
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "Products", url: `${SITE_CONFIG.url}/collections` },
+  ]);
 
   return (
-    <Container className="py-section">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <h1 className="text-ink text-3xl font-semibold tracking-tight sm:text-4xl">
-            Collections
-          </h1>
-          <p className="text-muted mt-2">{products.length} products</p>
-        </div>
-        <SearchBox />
-      </div>
+    <div data-snap-page>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
 
-      <div className="mt-10 grid gap-10 lg:grid-cols-[240px_1fr]">
-        <CollectionsFilters categories={categories} />
-        <ProductGrid products={products} />
-      </div>
-    </Container>
+      <ProductsHero
+        content={PRODUCTS_HERO}
+        mosaic={mosaic}
+        productCount={products.length}
+        categoryCount={categoryCount}
+      />
+      <ProductCatalog
+        id="products"
+        content={PRODUCTS_CATALOG}
+        products={products}
+        initialCategory={typeof category === "string" ? category : undefined}
+      />
+      <ClosingCta content={PRODUCTS_CTA} className="snap-start" />
+    </div>
   );
 }

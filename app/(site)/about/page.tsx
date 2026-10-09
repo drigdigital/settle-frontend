@@ -1,9 +1,9 @@
 import { ClosingCta } from "@/components/shared/ClosingCta";
+import { SplitHero } from "@/components/shared/SplitHero";
 import { StorySplit } from "@/components/shared/StorySplit";
 import { ABOUT_CTA, ABOUT_HERO, ABOUT_LEADERSHIP, ABOUT_STORIES } from "@/constants/about";
 import { SITE_CONFIG } from "@/constants/site";
 import { breadcrumbSchema, buildMetadata, organizationSchema } from "@/lib/seo";
-import { AboutHero } from "@/sections/about/AboutHero";
 import { AboutLeadership } from "@/sections/about/AboutLeadership";
 
 export const metadata = buildMetadata({
@@ -35,7 +35,7 @@ export default function AboutPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
       />
 
-      <AboutHero content={ABOUT_HERO} />
+      <SplitHero content={ABOUT_HERO} breadcrumbLabel="About" headingId="about-heading" />
       {ABOUT_STORIES.map((story) => (
         <StorySplit key={story.id} story={story} />
       ))}

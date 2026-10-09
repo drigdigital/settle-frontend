@@ -1,90 +1,64 @@
-import { Container } from "@/components/shared/Container";
-import { SectionHeading } from "@/components/shared/SectionHeading";
-import { EnquiryForm } from "@/components/shared/EnquiryForm";
-import { buildMetadata } from "@/lib/seo";
+import { ClosingCta } from "@/components/shared/ClosingCta";
+import { EnquirySection } from "@/components/shared/EnquirySection";
+import { SplitHero } from "@/components/shared/SplitHero";
+import {
+  BULK_ORDER_SOLUTIONS,
+  BUSINESS_CTA,
+  BUSINESS_ENQUIRY,
+  BUSINESS_HERO,
+  INDUSTRIES_SERVED,
+  PROCESS_WORKFLOW,
+} from "@/constants/business";
+import { DEPARTMENT_CONTACTS, SITE_CONFIG } from "@/constants/site";
+import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
+import { BulkOrderSolutions } from "@/sections/business/BulkOrderSolutions";
+import { IndustriesServed } from "@/sections/business/IndustriesServed";
+import { ProcessWorkflow } from "@/sections/business/ProcessWorkflow";
+
+const B2B_CONTACT = DEPARTMENT_CONTACTS.find((contact) => contact.department === "b2b");
 
 export const metadata = buildMetadata({
   title: "For Businesses",
   description:
-    "Bulk and dealer furniture solutions from Settle Furnitures — hotels, offices, and institutions.",
+    "Bulk furniture from Settle, made in-house in Coimbatore for retailers, dealers, hospitality buyers, builders and institutions across South India.",
   path: "/business",
 });
 
-const INDUSTRIES = [
-  "Hospitality",
-  "Corporate Offices",
-  "Real Estate Developers",
-  "Institutions",
-  "Interior Firms",
-];
-
-const PROCESS = [
-  {
-    step: "1",
-    title: "Share your requirement",
-    body: "Tell us the space, quantity, and timeline.",
-  },
-  {
-    step: "2",
-    title: "Get a proposal",
-    body: "We put together pricing and finish options for your review.",
-  },
-  {
-    step: "3",
-    title: "Confirm & produce",
-    body: "Once approved, your order moves into production.",
-  },
-  { step: "4", title: "Delivery & install", body: "We coordinate delivery and on-site setup." },
-];
-
+/**
+ * For Businesses page: hero → bulk orders → industries → process → B2B
+ * enquiry → closing CTA, one focused screen each. [data-snap-page] opts this
+ * page into gentle scroll snapping (app/globals.css). Content lives in
+ * constants/business.ts.
+ */
 export default function BusinessPage() {
+  const breadcrumbs = breadcrumbSchema([
+    { name: "Home", url: SITE_CONFIG.url },
+    { name: "For Businesses", url: `${SITE_CONFIG.url}/business` },
+  ]);
+
   return (
-    <>
-      <Container className="py-section">
-        <h1 className="text-ink max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
-          Bulk furniture solutions for your business
-        </h1>
-        <p className="text-muted mt-6 max-w-xl text-lg">
-          From single hotel rooms to full office fit-outs, our B2B team handles volume orders with
-          dedicated pricing and a single point of contact.
-        </p>
-      </Container>
+    <div data-snap-page>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
 
-      <section className="border-border bg-surface py-section border-y">
-        <Container>
-          <SectionHeading eyebrow="Industries" title="Who we work with" />
-          <ul className="mt-8 flex flex-wrap gap-3">
-            {INDUSTRIES.map((industry) => (
-              <li
-                key={industry}
-                className="border-border text-ink rounded-full border px-4 py-2 text-sm"
-              >
-                {industry}
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
-      <Container className="py-section">
-        <SectionHeading eyebrow="Process" title="How a B2B order works" />
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {PROCESS.map((item) => (
-            <div key={item.step}>
-              <span className="text-accent text-sm font-medium">Step {item.step}</span>
-              <h3 className="text-ink mt-2 text-base font-semibold">{item.title}</h3>
-              <p className="text-muted mt-2 text-sm">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </Container>
-
-      <section id="enquiry" className="border-border bg-surface py-section border-t">
-        <Container className="max-w-2xl">
-          <SectionHeading eyebrow="Get in touch" title="Tell us about your project" />
-          <EnquiryForm type="b2b" page="/business" className="mt-10" />
-        </Container>
-      </section>
-    </>
+      <SplitHero
+        content={BUSINESS_HERO}
+        breadcrumbLabel="For Businesses"
+        headingId="business-heading"
+      />
+      <BulkOrderSolutions content={BULK_ORDER_SOLUTIONS} />
+      <IndustriesServed content={INDUSTRIES_SERVED} />
+      <ProcessWorkflow content={PROCESS_WORKFLOW} />
+      <EnquirySection
+        id="enquiry"
+        content={BUSINESS_ENQUIRY}
+        formType="b2b"
+        page="/business"
+        contact={B2B_CONTACT}
+      />
+      <ClosingCta content={BUSINESS_CTA} className="snap-start" />
+    </div>
   );
 }

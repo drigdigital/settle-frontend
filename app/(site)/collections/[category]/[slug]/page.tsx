@@ -10,6 +10,7 @@ import { ProductGrid } from "@/components/shared/ProductGrid";
 import { Badge } from "@/components/ui/Badge";
 import { buildMetadata, breadcrumbSchema, productSchema } from "@/lib/seo";
 import { SITE_CONFIG } from "@/constants/site";
+import { formatAmount } from "@/utils/formatPrice";
 
 interface ProductPageProps {
   params: Promise<{ category: string; slug: string }>;
@@ -51,7 +52,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const relatedProducts = await getRelatedProducts(product);
 
   const breadcrumbs = breadcrumbSchema([
-    { name: "Collections", url: `${SITE_CONFIG.url}/collections` },
+    { name: "Products", url: `${SITE_CONFIG.url}/collections` },
     { name: categoryName, url: `${SITE_CONFIG.url}/collections?category=${category}` },
     { name: product.name, url: `${SITE_CONFIG.url}/collections/${category}/${product.slug}` },
   ]);
@@ -71,7 +72,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <ol className="flex flex-wrap items-center gap-2">
           <li>
             <Link href="/collections" className="hover:text-ink">
-              Collections
+              Products
             </Link>
           </li>
           <li aria-hidden="true">/</li>
@@ -95,6 +96,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <h1 className="text-ink mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
             {product.name}
           </h1>
+          {product.tagline && (
+            <p className="text-gold-deep mt-3 text-lg font-medium">{product.tagline}</p>
+          )}
           <p className="text-muted mt-4">{product.description}</p>
 
           {product.highlights.length > 0 && (
@@ -125,6 +129,17 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 ))}
               </div>
             </div>
+          )}
+
+          {product.priceOptions && product.priceOptions.length > 0 && (
+            <dl className="mt-6 space-y-2">
+              {product.priceOptions.map((option) => (
+                <div key={option.label} className="flex justify-between gap-6 text-sm sm:max-w-xs">
+                  <dt className="text-muted">{option.label}</dt>
+                  <dd className="text-ink font-semibold">{formatAmount(option.amount)}</dd>
+                </div>
+              ))}
+            </dl>
           )}
 
           <div className="mt-8">

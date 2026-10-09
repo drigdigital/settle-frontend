@@ -30,6 +30,12 @@ export interface Price {
   display: boolean;
 }
 
+/** A separately priced variant, e.g. Essen's Queen and King packages. */
+export interface PriceOption {
+  label: string;
+  amount: number;
+}
+
 export type ProductStatus = "active" | "draft" | "archived";
 
 export interface ProductSeo {
@@ -54,14 +60,20 @@ export interface Product {
   slug: string; // unique, formatted "category-name"
   category: Category | string;
   subLine?: SubLine | null;
+  /** Catalog headline the product is presented under, e.g. "Crafting the luxury you deserve." */
+  tagline?: string;
   description: string;
   highlights: string[];
   dimensions?: Dimensions;
+  /** Dimensions exactly as supplied, for when they don't map cleanly onto `dimensions`. */
+  dimensionsText?: string;
   sizeOptions?: SizeOption[];
   finishes: string[];
   material?: string;
   configuration?: string;
   price?: Price;
+  /** Per-variant prices; `price` then holds the lowest, shown as "From …". */
+  priceOptions?: PriceOption[];
   isPackage: boolean;
   images: ProductImage[];
   isFeatured: boolean;

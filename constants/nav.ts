@@ -6,7 +6,7 @@ export interface NavLink {
 export const PRIMARY_NAV: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Collections", href: "/collections" },
+  { label: "Products", href: "/collections" },
   { label: "For Businesses", href: "/business" },
   { label: "Experience Center", href: "/experience-center" },
   { label: "Dealers", href: "/dealers" },
@@ -17,7 +17,7 @@ export const FOOTER_LINKS: { title: string; links: NavLink[] }[] = [
   {
     title: "Explore",
     links: [
-      { label: "Collections", href: "/collections" },
+      { label: "Products", href: "/collections" },
       { label: "About Settle", href: "/about" },
       { label: "Experience Center", href: "/experience-center" },
     ],

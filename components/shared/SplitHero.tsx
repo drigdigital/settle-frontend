@@ -8,26 +8,35 @@ import { ViewportSection } from "@/components/shared/ViewportSection";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { ChevronRightIcon, FactoryIcon, HomeIcon, LayersIcon } from "@/components/ui/icons";
 import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
-import type { AboutHeroContent, AboutHighlightIcon } from "@/types/about";
+import type { PageHeroContent, PageHighlightIcon } from "@/types/page";
 
-const ICONS: Record<AboutHighlightIcon, ComponentType<SVGProps<SVGSVGElement>>> = {
+const ICONS: Record<PageHighlightIcon, ComponentType<SVGProps<SVGSVGElement>>> = {
   factory: FactoryIcon,
   layers: LayersIcon,
   home: HomeIcon,
 };
 
-const HEADING_ID = "about-heading";
-
 /**
- * About page Section 01: breadcrumb, eyebrow, the page's h1, intro and a
- * three-item strip beside the hero photo (stacked below `lg`). Animates on
- * load, not on scroll, since it's above the fold.
+ * Page hero in a viewport section: breadcrumb, eyebrow, the page's h1, intro
+ * and an optional three-item strip beside a photo (stacked below `lg`).
+ * Animates on load, not on scroll, since it's above the fold. The photo is
+ * the page's LCP element, so it's preloaded.
  */
-export function AboutHero({ content }: { content: AboutHeroContent }) {
+export function SplitHero({
+  content,
+  breadcrumbLabel,
+  headingId,
+}: {
+  content: PageHeroContent;
+  /** Current page's name in the "Home › …" breadcrumb. */
+  breadcrumbLabel: string;
+  /** Unique id for the h1, referenced by the section's aria-labelledby. */
+  headingId: string;
+}) {
   const { eyebrow, heading, intro, image, highlights } = content;
 
   return (
-    <ViewportSection labelledBy={HEADING_ID}>
+    <ViewportSection labelledBy={headingId}>
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <motion.div variants={staggerContainer(0.12, 0.1)} initial="hidden" animate="visible">
           <motion.nav variants={fadeUp} aria-label="Breadcrumb" className="text-muted text-sm">
@@ -41,7 +50,7 @@ export function AboutHero({ content }: { content: AboutHeroContent }) {
                 <ChevronRightIcon className="size-3.5" />
               </li>
               <li aria-current="page" className="text-navy font-medium">
-                About
+                {breadcrumbLabel}
               </li>
             </ol>
           </motion.nav>
@@ -54,7 +63,7 @@ export function AboutHero({ content }: { content: AboutHeroContent }) {
           </motion.p>
           <motion.h1
             variants={fadeUp}
-            id={HEADING_ID}
+            id={headingId}
             className="text-navy mt-4 text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-5xl"
           >
             {heading}
@@ -66,28 +75,30 @@ export function AboutHero({ content }: { content: AboutHeroContent }) {
             {intro}
           </motion.p>
 
-          <motion.ul
-            variants={fadeUp}
-            className="border-navy/10 mt-10 grid gap-6 border-t pt-8 sm:grid-cols-3 sm:gap-4"
-          >
-            {highlights.map((highlight) => {
-              const Icon = ICONS[highlight.icon];
-              return (
-                <li
-                  key={highlight.id}
-                  className="group flex items-center gap-4 sm:flex-col sm:items-start sm:gap-3"
-                >
-                  <IconBadge tone="gold">
-                    <Icon className="size-6" />
-                  </IconBadge>
-                  <div>
-                    <p className="text-navy text-sm font-semibold">{highlight.title}</p>
-                    <p className="text-muted mt-0.5 text-sm">{highlight.line}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </motion.ul>
+          {highlights && highlights.length > 0 && (
+            <motion.ul
+              variants={fadeUp}
+              className="border-navy/10 mt-10 grid gap-6 border-t pt-8 sm:grid-cols-3 sm:gap-4"
+            >
+              {highlights.map((highlight) => {
+                const Icon = ICONS[highlight.icon];
+                return (
+                  <li
+                    key={highlight.id}
+                    className="group flex items-center gap-4 sm:flex-col sm:items-start sm:gap-3"
+                  >
+                    <IconBadge tone="gold">
+                      <Icon className="size-6" />
+                    </IconBadge>
+                    <div>
+                      <p className="text-navy text-sm font-semibold">{highlight.title}</p>
+                      <p className="text-muted mt-0.5 text-sm">{highlight.line}</p>
+                    </div>
+                  </li>
+                );
+              })}
+            </motion.ul>
+          )}
         </motion.div>
 
         <motion.div

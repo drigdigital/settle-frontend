@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { enquirySchema, type EnquiryFormValues } from "@/lib/validations";
-import type { BusinessType, EnquiryType, VisitPurpose } from "@/types/enquiry";
+import type { B2BIndustry, BusinessType, EnquiryType, VisitPurpose } from "@/types/enquiry";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Select } from "@/components/ui/Select";
@@ -39,6 +39,17 @@ const BUSINESS_TYPE_OPTIONS: { value: BusinessType; label: string }[] = [
   { value: "retailer", label: "Furniture Retailer" },
   { value: "new-business", label: "New Business" },
   { value: "interior-design", label: "Interior Design Firm" },
+  { value: "other", label: "Other" },
+];
+
+// Labels follow the B2B enquiry form spec in the approved content document.
+const INDUSTRY_OPTIONS: { value: B2BIndustry; label: string }[] = [
+  { value: "hospitality", label: "Hospitality" },
+  { value: "real-estate", label: "Real Estate" },
+  { value: "corporate", label: "Corporate" },
+  { value: "education", label: "Education" },
+  { value: "retail-dealer", label: "Retail / Dealer" },
+  { value: "interior-design", label: "Interior Design" },
   { value: "other", label: "Other" },
 ];
 
@@ -122,7 +133,9 @@ export function EnquiryForm({
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <Label htmlFor="name">{currentType === "dealer" ? "Contact person" : "Full name"}</Label>
+          <Label htmlFor="name">
+            {COMPANY_FIELD_TYPES.includes(currentType) ? "Contact person" : "Full name"}
+          </Label>
           <Input id="name" autoComplete="name" error={errors.name?.message} {...register("name")} />
           <FieldError id="name-error" message={errors.name?.message} />
         </div>
@@ -167,7 +180,7 @@ export function EnquiryForm({
 
         {COMPANY_FIELD_TYPES.includes(currentType) && (
           <div className="sm:col-span-2">
-            <Label htmlFor="company">Company / business name</Label>
+            <Label htmlFor="company">Business / company name</Label>
             <Input id="company" error={errors.company?.message} {...register("company")} />
             <FieldError id="company-error" message={errors.company?.message} />
           </div>
@@ -205,6 +218,59 @@ export function EnquiryForm({
                 {...register("yearsInBusiness")}
               />
               <FieldError id="yearsInBusiness-error" message={errors.yearsInBusiness?.message} />
+            </div>
+          </>
+        )}
+
+        {currentType === "b2b" && (
+          <>
+            <div>
+              <Label htmlFor="industry">Industry</Label>
+              <Select id="industry" error={errors.industry?.message} {...register("industry")}>
+                <option value="">Select your industry</option>
+                {INDUSTRY_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </Select>
+              <FieldError id="industry-error" message={errors.industry?.message} />
+            </div>
+
+            <div>
+              <Label htmlFor="productCategories">Product categories required</Label>
+              <Input
+                id="productCategories"
+                error={errors.productCategories?.message}
+                {...register("productCategories")}
+              />
+              <FieldError
+                id="productCategories-error"
+                message={errors.productCategories?.message}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="estimatedQuantity">Estimated quantity</Label>
+              <Input
+                id="estimatedQuantity"
+                error={errors.estimatedQuantity?.message}
+                {...register("estimatedQuantity")}
+              />
+              <FieldError
+                id="estimatedQuantity-error"
+                message={errors.estimatedQuantity?.message}
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="deliveryTimeline">Expected delivery timeline</Label>
+              <Input
+                id="deliveryTimeline"
+                error={errors.deliveryTimeline?.message}
+                {...register("deliveryTimeline")}
+              />
+              <FieldError id="deliveryTimeline-error" message={errors.deliveryTimeline?.message} />
             </div>
           </>
         )}
@@ -264,7 +330,10 @@ export function EnquiryForm({
         )}
 
         <div className="sm:col-span-2">
-          <Label htmlFor="message">Message {currentType === "b2c" ? "(optional)" : ""}</Label>
+          <Label htmlFor="message">
+            {currentType === "b2b" ? "Message / additional requirements" : "Message"}{" "}
+            {currentType === "b2c" ? "(optional)" : ""}
+          </Label>
           <Textarea id="message" error={errors.message?.message} {...register("message")} />
           <FieldError id="message-error" message={errors.message?.message} />
         </div>

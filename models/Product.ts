@@ -34,14 +34,17 @@ export interface ProductDocument extends Document {
   slug: string;
   category: Types.ObjectId;
   subLine?: "ECO" | "PRIME" | "ULTRA" | "RECLINE" | null;
+  tagline?: string;
   description: string;
   highlights: string[];
   dimensions?: Record<string, unknown>;
+  dimensionsText?: string;
   sizeOptions?: unknown[];
   finishes: string[];
   material?: string;
   configuration?: string;
   price?: { amount: number; currency: "INR"; display: boolean };
+  priceOptions?: { label: string; amount: number }[];
   isPackage: boolean;
   images: { url: string; alt: string; isPrimary: boolean; type: "studio" | "lifestyle" }[];
   isFeatured: boolean;
@@ -57,9 +60,11 @@ const ProductSchema = new Schema<ProductDocument>(
     slug: { type: String, required: true, unique: true, index: true },
     category: { type: Schema.Types.ObjectId, ref: "Category", required: true, index: true },
     subLine: { type: String, enum: ["ECO", "PRIME", "ULTRA", "RECLINE", null], default: null },
+    tagline: String,
     description: { type: String, required: true },
     highlights: { type: [String], default: [] },
     dimensions: DimensionsSchema,
+    dimensionsText: String,
     sizeOptions: [SizeOptionSchema],
     finishes: { type: [String], default: [] },
     material: String,
@@ -69,6 +74,9 @@ const ProductSchema = new Schema<ProductDocument>(
       currency: { type: String, default: "INR" },
       display: { type: Boolean, default: false },
     },
+    priceOptions: [
+      new Schema({ label: { type: String, required: true }, amount: Number }, { _id: false }),
+    ],
     isPackage: { type: Boolean, default: false },
     images: { type: [ProductImageSchema], default: [] },
     isFeatured: { type: Boolean, default: false, index: true },

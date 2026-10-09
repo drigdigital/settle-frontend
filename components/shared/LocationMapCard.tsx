@@ -15,6 +15,8 @@ export interface LocationMapCardProps {
   phone?: string;
   emails?: string[];
   mapQuery: string;
+  /** id for the h2, so a parent section can reference it with aria-labelledby. */
+  headingId?: string;
   className?: string;
 }
 
@@ -39,6 +41,7 @@ export function LocationMapCard({
   phone,
   emails,
   mapQuery,
+  headingId,
   className,
 }: LocationMapCardProps) {
   const directionsHref = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapQuery)}`;
@@ -56,7 +59,9 @@ export function LocationMapCard({
     >
       <motion.div variants={fadeUp} className="flex flex-col justify-center p-8 sm:p-12">
         <p className="text-muted mb-3 text-sm font-medium tracking-widest uppercase">{eyebrow}</p>
-        <h2 className="text-ink text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
+        <h2 id={headingId} className="text-ink text-3xl font-semibold tracking-tight sm:text-4xl">
+          {title}
+        </h2>
         {description && <p className="text-muted mt-4 max-w-md">{description}</p>}
 
         <OfficeLocationDetails

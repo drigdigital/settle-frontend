@@ -15,7 +15,7 @@ const OFFICE_PHONE = "+91 90421 12233";
  * Premium Location & Map card (components/shared/LocationMapCard), split out
  * of the old WhatsApp + Location ConnectSection so it reads as its own
  * focused, editorial section — see the Experience Center page's
- * LocationAndMap for the same treatment applied to that address.
+ * VisitDetails for the same card applied to that address.
  */
 export function LocationSection() {
   return (

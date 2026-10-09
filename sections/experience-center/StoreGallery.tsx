@@ -2,75 +2,57 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Container } from "@/components/shared/Container";
-import { SectionHeading } from "@/components/shared/SectionHeading";
+import { AnimatedSectionHeading } from "@/components/shared/AnimatedSectionHeading";
+import { ViewportSection } from "@/components/shared/ViewportSection";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
+import type { StoreGalleryContent } from "@/types/experienceCenter";
 
-const GALLERY = [
-  {
-    image: "/images/gallery-living.jpg",
-    title: "Living & Sofas",
-    caption: "Eco, Prime and Ultra line setups",
-  },
-  {
-    image: "/images/gallery-bedroom.jpg",
-    title: "Bedroom & Wardrobes",
-    caption: "Including the Essen package",
-  },
-  {
-    image: "/images/gallery-dining.jpg",
-    title: "Dining",
-    caption: "Everyday sets to statement tables",
-  },
-  {
-    image: "/images/gallery-recliner.jpg",
-    title: "Recliners & Sofa-cum-Beds",
-    caption: "A dedicated comfort corner",
-  },
-];
+const HEADING_ID = "store-gallery-heading";
 
 /**
- * Pure image gallery — same card/grid technique as the homepage's
- * FeaturedCollections (image + bottom-left caption overlay, hover zoom), with
- * no product names or prices since this showcases the showroom floor itself.
+ * Experience Center Section 01: a straight photo gallery of the showroom
+ * floor, one 4:5 frame per area with its caption beneath. 2 × 2 below `lg`,
+ * one row of four from `lg`, capped in width so the row fits one screen.
  */
-export function StoreGallery() {
-  return (
-    <section className="bg-surface py-section-sm">
-      <Container>
-        <SectionHeading
-          eyebrow="Store Gallery"
-          title="Store Gallery"
-          description="A look inside the Experience Center, room by room. Browse full wardrobe, living, dining and bedroom setups exactly as they stand on the floor in Coimbatore."
-        />
+export function StoreGallery({ content }: { content: StoreGalleryContent }) {
+  const { eyebrow, heading, description, items } = content;
 
-        <motion.div
-          variants={staggerContainer(0.08)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4"
-        >
-          {GALLERY.map((item) => (
-            <motion.div key={item.title} variants={fadeUp} className="group">
-              <div className="bg-ink/5 relative aspect-4/3 overflow-hidden rounded-lg">
+  return (
+    <ViewportSection labelledBy={HEADING_ID}>
+      <AnimatedSectionHeading
+        id={HEADING_ID}
+        eyebrow={eyebrow}
+        heading={heading}
+        description={description}
+      />
+
+      <motion.ul
+        variants={staggerContainer(0.08)}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 sm:gap-6 lg:mt-14 lg:grid-cols-4"
+      >
+        {items.map((item) => (
+          <motion.li key={item.id} variants={fadeUp}>
+            <figure className="group">
+              <div className="bg-wood-sand relative aspect-4/5 overflow-hidden rounded-xl">
                 <Image
-                  src={item.image}
-                  alt={`${item.title} display at the Settle Experience Center`}
+                  src={item.image.src}
+                  alt={item.image.alt}
                   fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="object-cover transition-transform duration-400 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 15rem, 45vw"
+                  className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
+                  style={{ objectPosition: item.image.objectPosition }}
                 />
-                <div className="bg-ink/20 group-hover:bg-ink/30 absolute inset-0 transition-colors duration-300" />
-                <div className="absolute bottom-4 left-4">
-                  <p className="text-paper text-sm font-medium">{item.title}</p>
-                  <p className="text-paper/80 mt-0.5 text-xs">{item.caption}</p>
-                </div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </Container>
-    </section>
+              <figcaption className="text-navy mt-3 text-sm font-medium sm:text-base">
+                {item.caption}
+              </figcaption>
+            </figure>
+          </motion.li>
+        ))}
+      </motion.ul>
+    </ViewportSection>
   );
 }

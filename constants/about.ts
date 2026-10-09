@@ -1,9 +1,5 @@
-import type {
-  AboutCtaContent,
-  AboutHeroContent,
-  AboutLeadershipContent,
-  AboutStory,
-} from "@/types/about";
+import type { AboutCtaContent, AboutLeadershipContent, AboutStory } from "@/types/about";
+import type { PageHeroContent } from "@/types/page";
 
 /**
  * About page content, from the approved Settle_Furniture_Website_Content
@@ -15,7 +11,7 @@ import type {
  * the homepage and Experience Center page). Replace with Settle's own
  * showroom, factory-floor and product photography, and update `alt` to match.
  */
-export const ABOUT_HERO: AboutHeroContent = {
+export const ABOUT_HERO: PageHeroContent = {
   eyebrow: "About Settle",
   heading: "Furniture that feels like it was always meant to be in your home.",
   intro:

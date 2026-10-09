@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ViewportSection } from "@/components/shared/ViewportSection";
 import { fadeUp, scaleIn, staggerContainer, viewportOnce } from "@/lib/animations";
 import { cn } from "@/utils/cn";
-import type { AboutImage, AboutStory } from "@/types/about";
+import type { PageImage, StoryContent } from "@/types/page";
 
 const TEXT_TONES = {
   light: {
@@ -13,6 +13,8 @@ const TEXT_TONES = {
     heading: "text-navy",
     body: "text-muted",
     ring: "ring-paper",
+    pointTitle: "text-navy",
+    pointRule: "border-gold",
   },
   // gold-light: plain gold text on navy is 4.6:1, gold-light 5.9:1.
   dark: {
@@ -20,6 +22,8 @@ const TEXT_TONES = {
     heading: "text-paper",
     body: "text-paper/80",
     ring: "ring-navy",
+    pointTitle: "text-paper",
+    pointRule: "border-gold/60",
   },
 } as const;
 
@@ -28,7 +32,7 @@ function Frame({
   sizes,
   className,
 }: {
-  image: AboutImage;
+  image: PageImage;
   sizes: string;
   className?: string;
 }) {
@@ -47,7 +51,7 @@ function Frame({
 }
 
 /** 1 image: one frame. 2: large frame with a smaller one overlapping its corner. 4: 2 × 2 mosaic. */
-function StoryMedia({ images, ring }: { images: AboutImage[]; ring: string }) {
+function StoryMedia({ images, ring }: { images: PageImage[]; ring: string }) {
   if (images.length >= 4) {
     return (
       <div className="mx-auto grid max-w-xl grid-cols-2 gap-3 sm:gap-4 lg:mx-0">
@@ -88,12 +92,12 @@ function StoryMedia({ images, ring }: { images: AboutImage[]; ring: string }) {
 
 /**
  * Alternating image/text row in its own viewport-height section: eyebrow,
- * heading and body beside 1, 2 or 4 photos. The image goes on top on phones
+ * heading, body and an optional titled list beside 1, 2 or 4 photos. The image goes on top on phones
  * and tablets and to the chosen side from `lg`. Media scales in and the text
  * staggers up on scroll.
  */
-export function StorySplit({ story }: { story: AboutStory }) {
-  const { id, eyebrow, heading, body, images, imageSide, tone } = story;
+export function StorySplit({ story }: { story: StoryContent }) {
+  const { id, eyebrow, heading, body, points, images, imageSide, tone } = story;
   const textTone = TEXT_TONES[tone === "navy" ? "dark" : "light"];
   const headingId = `${id}-heading`;
 
@@ -139,6 +143,24 @@ export function StorySplit({ story }: { story: AboutStory }) {
           >
             {body}
           </motion.p>
+          {points && points.length > 0 && (
+            <dl className="mt-8 space-y-5">
+              {points.map((point) => (
+                <motion.div
+                  key={point.id}
+                  variants={fadeUp}
+                  className={cn("border-l-2 pl-4", textTone.pointRule)}
+                >
+                  <dt className={cn("text-base font-semibold", textTone.pointTitle)}>
+                    {point.title}
+                  </dt>
+                  <dd className={cn("mt-1 text-sm leading-relaxed sm:text-base", textTone.body)}>
+                    {point.body}
+                  </dd>
+                </motion.div>
+              ))}
+            </dl>
+          )}
         </motion.div>
       </div>
     </ViewportSection>

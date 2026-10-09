@@ -1,7 +1,14 @@
 import { connectToDatabase } from "@/lib/db";
 import { Enquiry as EnquiryModel } from "@/models/Enquiry";
 import { DEPARTMENT_CONTACTS } from "@/constants/site";
-import type { BusinessType, Department, Enquiry, EnquiryType, VisitPurpose } from "@/types/enquiry";
+import type {
+  B2BIndustry,
+  BusinessType,
+  Department,
+  Enquiry,
+  EnquiryType,
+  VisitPurpose,
+} from "@/types/enquiry";
 
 const DEPARTMENT_BY_TYPE: Record<EnquiryType, Department> = {
   general: "support",
@@ -30,6 +37,10 @@ export interface CreateEnquiryInput {
   visitorCount?: string;
   businessType?: BusinessType;
   yearsInBusiness?: string;
+  industry?: B2BIndustry;
+  productCategories?: string;
+  estimatedQuantity?: string;
+  deliveryTimeline?: string;
   source: { productId?: string; productName?: string; productSlug?: string; page: string };
 }
 

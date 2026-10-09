@@ -66,6 +66,7 @@ export function ProductSpecs({ product }: { product: Product }) {
           {product.dimensions && (
             <p className="text-ink text-sm">{formatDimensionLabel(product.dimensions)}</p>
           )}
+          {product.dimensionsText && <p className="text-ink text-sm">{product.dimensionsText}</p>}
           {product.sizeOptions && product.sizeOptions.length > 0 && (
             <table className="mt-4 w-full text-left text-sm">
               <thead>
@@ -84,7 +85,7 @@ export function ProductSpecs({ product }: { product: Product }) {
               </tbody>
             </table>
           )}
-          {!product.dimensions && !product.sizeOptions?.length && (
+          {!product.dimensions && !product.dimensionsText && !product.sizeOptions?.length && (
             <p className="text-muted text-sm">Dimensions available on request.</p>
           )}
         </div>

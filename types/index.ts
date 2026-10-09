@@ -9,3 +9,7 @@ export * from "./partner";
 export * from "./banner";
 export * from "./testimonial";
 export * from "./about";
+export * from "./page";
+export * from "./business";
+export * from "./experienceCenter";
+export * from "./dealers";

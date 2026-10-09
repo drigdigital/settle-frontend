@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { ProductImageFallback } from "@/components/shared/ProductImageFallback";
 import { cn } from "@/utils/cn";
 import type { ProductImage } from "@/types/product";
 
@@ -15,7 +16,13 @@ export function ProductGallery({
   const [activeIndex, setActiveIndex] = useState(0);
   const active = images[activeIndex] ?? images[0];
 
-  if (!active) return null;
+  if (!active) {
+    return (
+      <div className="relative aspect-4/3 overflow-hidden rounded-lg">
+        <ProductImageFallback name={productName} />
+      </div>
+    );
+  }
 
   return (
     <div>

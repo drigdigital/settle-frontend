@@ -417,3 +417,59 @@ export function UserIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function BedIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 18V6M3 14h18v4M21 14v-2a3 3 0 00-3-3h-7v5" />
+        <circle cx="7" cy="11" r="1.5" />
+      </g>
+    </svg>
+  );
+}
+
+export function BuildingIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 21V5l8-2v18M12 21h8V9l-8-2M2 21h20" />
+        <path d="M7 8h2M7 12h2M7 16h2M15 12h2M15 16h2" />
+      </g>
+    </svg>
+  );
+}
+
+export function BriefcaseIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="7" width="18" height="13" rx="2" />
+        <path d="M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2M3 12.5h18" />
+      </g>
+    </svg>
+  );
+}
+
+export function GraduationCapIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M2 9l10-5 10 5-10 5-10-5z" />
+        <path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5M22 9v6" />
+      </g>
+    </svg>
+  );
+}
+
+export function SwatchIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
+      <g stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="3" width="6" height="18" rx="1" />
+        <path d="M9 8l4.5-2.5 6 11L13 20" />
+        <circle cx="6" cy="17" r="1" />
+      </g>
+    </svg>
+  );
+}

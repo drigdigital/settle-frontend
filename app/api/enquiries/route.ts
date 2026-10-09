@@ -36,8 +36,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const { website: _website, ...input } = parsed.data;
-  const enquiry = await createEnquiry(input);
+  const { website: _website, industry, ...input } = parsed.data;
+  // The industry <select>'s empty "Select…" option arrives as "".
+  const enquiry = await createEnquiry({ ...input, industry: industry || undefined });
 
   return NextResponse.json({ ok: true, id: enquiry._id }, { status: 201 });
 }

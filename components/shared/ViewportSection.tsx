@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Container } from "@/components/shared/Container";
 import { cn } from "@/utils/cn";
-import type { SectionTone } from "@/types/about";
+import type { SectionTone } from "@/types/page";
 
 const TONE_CLASSES: Record<SectionTone, string> = {
   paper: "bg-paper",
@@ -17,11 +17,14 @@ const TONE_CLASSES: Record<SectionTone, string> = {
  * being clipped.
  */
 export function ViewportSection({
+  id,
   tone = "paper",
   labelledBy,
   className,
   children,
 }: {
+  /** Anchor target, e.g. "enquiry" for /business#enquiry. */
+  id?: string;
   tone?: SectionTone;
   /** id of the section's heading, for aria-labelledby. */
   labelledBy?: string;
@@ -30,6 +33,7 @@ export function ViewportSection({
 }) {
   return (
     <section
+      id={id}
       aria-labelledby={labelledBy}
       className={cn(
         "min-h-viewport py-section-sm flex snap-start items-center overflow-hidden lg:py-16",

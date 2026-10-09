@@ -4,6 +4,15 @@ export type BusinessType = "retailer" | "new-business" | "interior-design" | "ot
 
 export type VisitPurpose = "personal" | "dealer" | "bulk-order";
 
+export type B2BIndustry =
+  | "hospitality"
+  | "real-estate"
+  | "corporate"
+  | "education"
+  | "retail-dealer"
+  | "interior-design"
+  | "other";
+
 export type EnquiryStatus = "new" | "contacted" | "qualified" | "converted" | "closed";
 
 export type Department = "sales" | "b2b" | "dealer-relations" | "experience-center" | "support";
@@ -30,6 +39,10 @@ export interface Enquiry {
   visitorCount?: string; // walkthrough
   businessType?: BusinessType; // dealer
   yearsInBusiness?: string; // dealer
+  industry?: B2BIndustry; // b2b
+  productCategories?: string; // b2b
+  estimatedQuantity?: string; // b2b
+  deliveryTimeline?: string; // b2b
   source: EnquirySourceProduct;
   status: EnquiryStatus;
   assignedDepartment: Department;
