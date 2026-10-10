@@ -15,7 +15,7 @@ export const ABOUT_HERO: PageHeroContent = {
   eyebrow: "About Settle",
   heading: "Furniture that feels like it was always meant to be in your home.",
   intro:
-    "Settle Furniture is a furniture brand under Vaanam Furniture, part of the Martin Group, Coimbatore that acts as a Subsidiary company of Vaanam. Where Vaanam brings the manufacturing scale behind three furniture brands, Settle brings that same strength into everyday homes, furniture for people furnishing real, lived-in spaces across South India.",
+    "Settle Furniture is a furniture brand under Vaanam Furniture, part of the Martin Group, Coimbatore that acts as a Subsidiary company of Vaanam. Where Vaanam brings the manufacturing scale behind three furniture brands, Settle brings that same strength into everyday homes, furniture for people furnishing real, lived-in spaces across India.",
   image: {
     src: "/images/experience-center-hero.jpg",
     alt: "Furniture showroom floor with a grey sectional sofa, recliners and lounge seating on display",
@@ -37,7 +37,7 @@ export const ABOUT_HERO: PageHeroContent = {
       id: "real-homes",
       icon: "home",
       title: "For real, lived-in homes",
-      line: "Across South India",
+      line: "Across India",
     },
   ],
 };

@@ -4,7 +4,7 @@ import type { ClientLogo, Testimonial } from "@/types/testimonial";
 export const TESTIMONIALS_CONTENT = {
   eyebrow: "Testimonials",
   heading: "What our dealers and customers say.",
-  logoStripLabel: "Trusted by retailers across South India",
+  logoStripLabel: "Trusted by retailers across India",
 } as const;
 
 export const TESTIMONIALS_AUTOPLAY_MS = 6000;

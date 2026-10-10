@@ -21,7 +21,7 @@ export const BUSINESS_HERO: PageHeroContent = {
   eyebrow: "For Businesses",
   heading: "Furniture manufacturing you can build a business on.",
   intro:
-    "Settle Furniture is the retail face of Vaanam Furniture's manufacturing strength, in Coimbatore. Beyond individual homes, we work directly with retailers, dealers, hospitality buyers, builders and institutions across South India who need furniture at scale, delivered on schedule, without compromising the finish quality every Settle piece is known for.",
+    "Settle Furniture is the retail face of Vaanam Furniture's manufacturing strength, in Coimbatore. Beyond individual homes, we work directly with retailers, dealers, hospitality buyers, builders and institutions across India who need furniture at scale, delivered on schedule, without compromising the finish quality every Settle piece is known for.",
   image: {
     src: "/images/gallery-bedroom.jpg",
     alt: "A wall of matching wooden wardrobe units with mirrored doors in a bright bedroom",
@@ -58,7 +58,7 @@ export const INDUSTRIES_SERVED: BusinessSection<IconTile> = {
   eyebrow: "02",
   heading: "Industries Served",
   description:
-    "From hotels furnishing a new wing to builders handing over move-in-ready homes, Settle furniture already sits in a range of business settings across South India.",
+    "From hotels furnishing a new wing to builders handing over move-in-ready homes, Settle furniture already sits in a range of business settings across India.",
   items: [
     { id: "hospitality", icon: "bed", label: "Hospitality & Hotels" },
     { id: "real-estate", icon: "building", label: "Real Estate & Builder Projects" },

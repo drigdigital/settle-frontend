@@ -1,7 +1,7 @@
 import type { BrandValue } from "@/types/brand";
 
 /** Homepage Section 02 — brand value proposition strip. */
-export const BRAND_VALUES_HEADING = "Why homes across South India choose Settle.";
+export const BRAND_VALUES_HEADING = "Why homes across India choose Settle.";
 
 export const BRAND_VALUES: BrandValue[] = [
   {
@@ -24,9 +24,9 @@ export const BRAND_VALUES: BrandValue[] = [
     id: "real-homes",
     icon: "home",
     title: "Designed For Real Homes",
-    shortLine: "Built for South Indian living",
+    shortLine: "Built for Indian living",
     description:
-      "Our range is shaped around how South Indian homes live, from compact 2-door wardrobes to modular sofa sets.",
+      "Our range is shaped around how Indian homes live, from compact 2-door wardrobes to modular sofa sets.",
   },
   {
     id: "fair-pricing",

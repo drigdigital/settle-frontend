@@ -9,7 +9,7 @@ import { AboutLeadership } from "@/sections/about/AboutLeadership";
 export const metadata = buildMetadata({
   title: "About Us",
   description:
-    "Settle Furniture is a Vaanam Furniture brand, part of the Martin Group, Coimbatore: furniture made in-house for real, lived-in homes across South India.",
+    "Settle Furniture is a Vaanam Furniture brand, part of the Martin Group, Coimbatore: furniture made in-house for real, lived-in homes across India.",
   path: "/about",
 });
 

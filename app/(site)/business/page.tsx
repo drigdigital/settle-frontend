@@ -20,7 +20,7 @@ const B2B_CONTACT = DEPARTMENT_CONTACTS.find((contact) => contact.department ===
 export const metadata = buildMetadata({
   title: "For Businesses",
   description:
-    "Bulk furniture from Settle, made in-house in Coimbatore for retailers, dealers, hospitality buyers, builders and institutions across South India.",
+    "Bulk furniture from Settle, made in-house in Coimbatore for retailers, dealers, hospitality buyers, builders and institutions across India.",
   path: "/business",
 });
 
