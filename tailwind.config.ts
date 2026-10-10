@@ -70,8 +70,16 @@ const config: Config = {
         large: "0 16px 48px 0 rgb(0 0 0 / 0.12)",
       },
       spacing: {
-        section: "6rem",
-        "section-sm": "3rem",
+        // Vertical section padding. `section` is a CSS variable (app/globals.css)
+        // that tightens on short laptop screens, so a full section, padding
+        // included, still fits one screen at 1366 × 768.
+        section: "var(--space-section)",
+        "section-sm": "2.5rem",
+      },
+      height: {
+        // Room for a hero photo in a ViewportSection from `lg`: one screen minus
+        // the sticky Navbar (4.5rem) and the section's own top + bottom padding.
+        "viewport-panel": "calc(100svh - 4.5rem - 2 * var(--space-section))",
       },
       maxWidth: {
         container: "1440px",
@@ -81,7 +89,7 @@ const config: Config = {
         hero: "85svh",
         // Full-width media banners (homepage Section 06).
         banner: "70svh",
-        "banner-lg": "80svh",
+        "banner-lg": "76svh",
         // Closing CTA band (homepage Section 08).
         // One screen below the sticky Navbar (h-18 / 4.5rem); svh so mobile browser chrome doesn't resize sections mid-scroll.
         viewport: "calc(100svh - 4.5rem)",

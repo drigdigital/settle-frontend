@@ -53,7 +53,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
           logos={logos}
           label={logoStripLabel}
           labelId={LOGOS_LABEL_ID}
-          className={cn(hasTestimonials && "border-navy/10 mt-14 border-t pt-12 lg:mt-20 lg:pt-14")}
+          className={cn(hasTestimonials && "border-navy/10 mt-8 border-t pt-8")}
         />
       </Container>
     </section>

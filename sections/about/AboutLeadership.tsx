@@ -36,7 +36,7 @@ export function AboutLeadership({ content }: { content: AboutLeadershipContent }
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="mx-auto mt-12 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className="mx-auto mt-8 grid max-w-5xl gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
       >
         {hasProfiles
           ? profiles.map((profile) => (

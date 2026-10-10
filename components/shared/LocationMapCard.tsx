@@ -53,11 +53,11 @@ export function LocationMapCard({
       whileInView="visible"
       viewport={viewportOnce}
       className={cn(
-        "bg-surface shadow-soft grid overflow-hidden rounded-xl lg:grid-cols-2 lg:items-stretch",
+        "bg-surface shadow-soft grid overflow-hidden rounded-xl md:grid-cols-2 md:items-stretch",
         className,
       )}
     >
-      <motion.div variants={fadeUp} className="flex flex-col justify-center p-8 sm:p-12">
+      <motion.div variants={fadeUp} className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
         <p className="text-muted mb-3 text-sm font-medium tracking-widest uppercase">{eyebrow}</p>
         <h2 id={headingId} className="text-ink text-3xl font-semibold tracking-tight sm:text-4xl">
           {title}
@@ -65,7 +65,7 @@ export function LocationMapCard({
         {description && <p className="text-muted mt-4 max-w-md">{description}</p>}
 
         <OfficeLocationDetails
-          className="mt-8"
+          className="mt-6"
           name={name}
           addressLines={addressLines}
           phone={phone}
@@ -76,7 +76,7 @@ export function LocationMapCard({
           href={directionsHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-primary text-primary-foreground mt-8 inline-flex h-12 w-fit items-center rounded px-8 text-sm font-medium transition-opacity duration-200 hover:opacity-90"
+          className="bg-primary text-primary-foreground mt-6 inline-flex h-12 w-fit items-center rounded px-8 text-sm font-medium transition-opacity duration-200 hover:opacity-90"
         >
           Get Directions
         </a>
@@ -86,7 +86,7 @@ export function LocationMapCard({
         <MapEmbed
           name={name}
           mapQuery={mapQuery}
-          className="aspect-4/3 rounded-none lg:aspect-auto lg:h-full"
+          className="aspect-video rounded-none md:aspect-auto md:h-full"
         />
         <div className="bg-surface shadow-medium absolute bottom-4 left-4 flex items-center gap-2 rounded-full px-4 py-2">
           <PinIcon className="text-primary h-4 w-4 flex-none" />

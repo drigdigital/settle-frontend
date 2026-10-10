@@ -17,7 +17,7 @@ export function ProcessWorkflow({ content }: { content: BusinessSection<ProcessS
         heading={heading}
         description={description}
       />
-      <ProcessSteps steps={items} className="mt-12 lg:mt-16" />
+      <ProcessSteps steps={items} className="mt-8 lg:mt-12" />
     </ViewportSection>
   );
 }

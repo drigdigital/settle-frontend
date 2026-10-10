@@ -18,7 +18,7 @@ export function IndustriesServed({ content }: { content: BusinessSection<IconTil
         description={description}
         tone="inverse"
       />
-      <IconTileGrid tiles={items} className="mt-10 lg:mt-14" />
+      <IconTileGrid tiles={items} className="mt-8 lg:mt-12" />
     </ViewportSection>
   );
 }

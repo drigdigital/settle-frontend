@@ -77,7 +77,7 @@ export function ProductCatalog({
       <div
         role="group"
         aria-label="Filter products by category"
-        className="mt-8 flex flex-wrap justify-center gap-2"
+        className="mt-6 flex flex-wrap justify-center gap-2"
       >
         {chips.map((chip) => {
           const isActive = chip.slug === active;
@@ -108,7 +108,7 @@ export function ProductCatalog({
       </p>
 
       {/* Keyed by category so the cards stagger in afresh on each filter change. */}
-      <ProductGrid key={active} products={visible} className="mt-10" />
+      <ProductGrid key={active} products={visible} className="mt-8" />
     </ViewportSection>
   );
 }

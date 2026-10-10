@@ -56,7 +56,7 @@ export function ProductsHero({
 
           <motion.p
             variants={fadeUp}
-            className="text-gold-deep mt-8 text-sm font-medium tracking-widest uppercase"
+            className="text-gold-deep mt-6 text-sm font-medium tracking-widest uppercase"
           >
             {eyebrow}
           </motion.p>
@@ -69,14 +69,14 @@ export function ProductsHero({
           </motion.h1>
           <motion.p
             variants={fadeUp}
-            className="text-muted mt-6 max-w-xl text-base leading-relaxed sm:text-lg"
+            className="text-muted mt-5 max-w-xl text-base leading-relaxed sm:text-lg"
           >
             {intro}
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="border-navy/10 text-navy mt-8 flex gap-8 border-t pt-6 text-sm"
+            className="border-navy/10 text-navy mt-6 flex gap-8 border-t pt-5 text-sm"
           >
             <span>
               <span className="block text-3xl font-semibold tracking-tight">{productCount}</span>
@@ -88,7 +88,7 @@ export function ProductsHero({
             </span>
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4">
+          <motion.div variants={fadeUp} className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-4">
             <Link
               href={primaryCta.href}
               className={cn(buttonVariants({ variant: "primary", size: "lg" }), "w-full sm:w-auto")}
@@ -109,7 +109,7 @@ export function ProductsHero({
             variants={staggerContainer(0.1, 0.2)}
             initial="hidden"
             animate="visible"
-            className="mx-auto grid aspect-square w-full max-w-xl grid-cols-2 grid-rows-2 gap-3 sm:gap-4 lg:max-w-none"
+            className="lg:h-viewport-panel mx-auto grid aspect-4/3 w-full max-w-xl grid-cols-2 grid-rows-2 gap-3 sm:gap-4 lg:aspect-auto lg:max-h-180 lg:max-w-none"
           >
             {mosaic.slice(0, 3).map((product, index) => {
               const image = product.images.find((img) => img.isPrimary) ?? product.images[0];

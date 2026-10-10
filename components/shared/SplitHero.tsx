@@ -18,7 +18,9 @@ const ICONS: Record<PageHighlightIcon, ComponentType<SVGProps<SVGSVGElement>>> =
 
 /**
  * Page hero in a viewport section: breadcrumb, eyebrow, the page's h1, intro
- * and an optional three-item strip beside a photo (stacked below `lg`).
+ * and an optional three-item strip beside a photo (stacked below `lg`). From
+ * `lg` the photo's height comes from the screen (`h-viewport-panel`), not a
+ * fixed aspect ratio, so the hero always fits one viewport.
  * Animates on load, not on scroll, since it's above the fold. The photo is
  * the page's LCP element, so it's preloaded.
  */
@@ -57,7 +59,7 @@ export function SplitHero({
 
           <motion.p
             variants={fadeUp}
-            className="text-gold-deep mt-8 text-sm font-medium tracking-widest uppercase"
+            className="text-gold-deep mt-6 text-sm font-medium tracking-widest uppercase"
           >
             {eyebrow}
           </motion.p>
@@ -70,7 +72,7 @@ export function SplitHero({
           </motion.h1>
           <motion.p
             variants={fadeUp}
-            className="text-muted mt-6 text-base leading-relaxed sm:text-lg"
+            className="text-muted mt-5 text-base leading-relaxed sm:text-lg"
           >
             {intro}
           </motion.p>
@@ -78,7 +80,7 @@ export function SplitHero({
           {highlights && highlights.length > 0 && (
             <motion.ul
               variants={fadeUp}
-              className="border-navy/10 mt-10 grid gap-6 border-t pt-8 sm:grid-cols-3 sm:gap-4"
+              className="border-navy/10 mt-8 grid gap-4 border-t pt-6 sm:grid-cols-3"
             >
               {highlights.map((highlight) => {
                 const Icon = ICONS[highlight.icon];
@@ -105,7 +107,7 @@ export function SplitHero({
           variants={scaleIn}
           initial="hidden"
           animate="visible"
-          className="bg-wood-sand relative aspect-4/3 overflow-hidden rounded-xl lg:aspect-4/5 xl:aspect-square"
+          className="bg-wood-sand lg:h-viewport-panel relative aspect-video overflow-hidden rounded-xl sm:aspect-21/9 lg:aspect-auto lg:max-h-180"
         >
           <Image
             src={image.src}

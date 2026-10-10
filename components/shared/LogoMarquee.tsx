@@ -75,7 +75,7 @@ export function LogoMarquee({
           {label}
         </p>
       )}
-      <div className="group mask-fade-x mt-8 overflow-hidden motion-reduce:mask-none">
+      <div className="group mask-fade-x mt-6 overflow-hidden motion-reduce:mask-none">
         <div className="animate-marquee group-focus-within:animate-paused group-hover:animate-paused flex w-max motion-reduce:w-full motion-reduce:animate-none">
           {renderList(false)}
           {renderList(true)}

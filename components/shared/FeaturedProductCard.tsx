@@ -31,7 +31,8 @@ interface FeaturedProductCardProps {
 }
 
 /**
- * Portrait (4:5) product card on a white mat: category + line pill, name,
+ * Product card on a white mat (photo square on phones, 4:5 on tablets, 4:3
+ * from `lg` so the whole carousel fits one screen): category + line pill, name,
  * two-line description and a "View Details" link whose hit area stretches
  * over the whole card. On hover or keyboard focus the card lifts, the photo
  * slow-zooms and the link underline draws in; zoom and lift are dropped under
@@ -54,7 +55,7 @@ export function FeaturedProductCard({ product, sizes, className }: FeaturedProdu
         className,
       )}
     >
-      <div className="bg-wood-sand relative aspect-4/5 overflow-hidden rounded-lg">
+      <div className="bg-wood-sand relative aspect-square overflow-hidden rounded-lg sm:aspect-4/5 lg:aspect-4/3">
         {image ? (
           <Image
             src={image.src}
@@ -82,7 +83,7 @@ export function FeaturedProductCard({ product, sizes, className }: FeaturedProdu
         )}
       </div>
 
-      <div className="flex flex-1 flex-col px-2 pt-5 pb-2">
+      <div className="flex flex-1 flex-col px-2 pt-4 pb-2">
         {/* min-h matches the line pill, so names align across cards with and without one. */}
         <div className="flex min-h-6 flex-wrap items-center gap-x-3 gap-y-2">
           <p className="text-accent text-xs font-semibold tracking-widest uppercase">{category}</p>
@@ -98,7 +99,7 @@ export function FeaturedProductCard({ product, sizes, className }: FeaturedProdu
         </h3>
         <p className="text-muted mt-2 line-clamp-2 text-sm leading-relaxed">{description}</p>
 
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-6">
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-3 pt-4">
           {/* `before:` stretches the link over the whole card; the visible text stays the label. */}
           <Link
             href={productPath(product.categorySlug, product.slug)}

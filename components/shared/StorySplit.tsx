@@ -60,7 +60,7 @@ function StoryMedia({ images, ring }: { images: PageImage[]; ring: string }) {
             key={image.src}
             image={image}
             sizes="(min-width: 1024px) 18rem, 45vw"
-            className="aspect-square"
+            className="aspect-4/3 lg:aspect-square"
           />
         ))}
       </div>
@@ -87,7 +87,13 @@ function StoryMedia({ images, ring }: { images: PageImage[]; ring: string }) {
     );
   }
 
-  return <Frame image={primary} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-4/3" />;
+  return (
+    <Frame
+      image={primary}
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      className="aspect-video lg:aspect-4/3"
+    />
+  );
 }
 
 /**
@@ -144,7 +150,7 @@ export function StorySplit({ story }: { story: StoryContent }) {
             {body}
           </motion.p>
           {points && points.length > 0 && (
-            <dl className="mt-8 space-y-5">
+            <dl className="mt-6 space-y-4">
               {points.map((point) => (
                 <motion.div
                   key={point.id}

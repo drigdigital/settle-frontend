@@ -44,11 +44,11 @@ export function EnquirySection({
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="grid gap-10 lg:grid-cols-5 lg:items-center lg:gap-16"
+        className="grid gap-8 lg:grid-cols-5 lg:items-center lg:gap-16"
       >
         <motion.div variants={fadeUp} className="lg:col-span-2">
           {image && (
-            <div className="bg-wood-sand relative mb-8 aspect-4/3 overflow-hidden rounded-xl sm:aspect-video">
+            <div className="bg-wood-sand relative mb-6 aspect-21/9 overflow-hidden rounded-xl lg:aspect-video">
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -68,7 +68,7 @@ export function EnquirySection({
           </h2>
           <p className="text-muted mt-4 max-w-md text-base sm:text-lg">{description}</p>
           {contact && (
-            <p className="border-navy/10 mt-8 border-t pt-6 text-sm">
+            <p className="border-navy/10 mt-6 border-t pt-5 text-sm">
               <span className="text-navy block font-semibold">{contact.label}</span>
               <a
                 href={`mailto:${contact.email}`}
@@ -82,7 +82,7 @@ export function EnquirySection({
 
         <motion.div
           variants={fadeUp}
-          className="bg-surface shadow-medium rounded-xl p-6 sm:p-8 lg:col-span-3"
+          className="bg-surface shadow-medium rounded-xl p-5 sm:p-6 lg:col-span-3"
         >
           <EnquiryForm type={formType} page={page} submitLabel={submitLabel} />
         </motion.div>

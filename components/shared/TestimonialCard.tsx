@@ -30,7 +30,7 @@ export function TestimonialCard({
   return (
     <figure
       className={cn(
-        "group bg-surface shadow-soft hover:shadow-medium flex w-full flex-col rounded-xl p-6 transition-[transform,box-shadow] duration-300 motion-safe:hover:-translate-y-1 sm:p-8",
+        "group bg-surface shadow-soft hover:shadow-medium flex w-full flex-col rounded-xl p-6 transition-[transform,box-shadow] duration-300 motion-safe:hover:-translate-y-1",
         className,
       )}
     >
@@ -47,7 +47,7 @@ export function TestimonialCard({
       </div>
 
       {rating !== undefined && (
-        <div className="text-gold mt-5 flex gap-1">
+        <div className="text-gold mt-4 flex gap-1">
           <span className="sr-only">{`Rated ${rating} out of 5`}</span>
           {STARS.map((star) => (
             <StarIcon key={star} filled={star <= rating} />
@@ -55,11 +55,11 @@ export function TestimonialCard({
         </div>
       )}
 
-      <blockquote className="text-navy mt-5 flex-1 text-base leading-relaxed lg:text-lg">
+      <blockquote className="text-navy mt-4 flex-1 text-base leading-relaxed xl:text-lg">
         <p>{quote}</p>
       </blockquote>
 
-      <figcaption className="border-navy/10 mt-6 flex items-center gap-4 border-t pt-6">
+      <figcaption className="border-navy/10 mt-5 flex items-center gap-4 border-t pt-5">
         {photo ? (
           <Image
             src={photo}

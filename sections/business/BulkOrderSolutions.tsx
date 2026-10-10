@@ -17,7 +17,7 @@ export function BulkOrderSolutions({ content }: { content: BusinessSection<BulkO
         heading={heading}
         description={description}
       />
-      <ValueGrid values={items} className="mt-10 lg:mt-14" />
+      <ValueGrid values={items} className="mt-8 lg:mt-12" />
     </ViewportSection>
   );
 }

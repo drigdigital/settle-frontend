@@ -325,7 +325,7 @@ export function Carousel({
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative -mx-4 mt-4 flex snap-x snap-mandatory scroll-px-4 [scrollbar-width:none] gap-5 overflow-x-auto overscroll-x-contain px-4 py-6 sm:-mx-6 sm:scroll-px-6 sm:gap-6 sm:px-6 lg:-mx-4 lg:mt-6 lg:scroll-px-4 lg:px-4 [&::-webkit-scrollbar]:hidden"
+        className="relative -mx-4 mt-4 flex snap-x snap-mandatory scroll-px-4 [scrollbar-width:none] gap-5 overflow-x-auto overscroll-x-contain px-4 py-4 sm:-mx-6 sm:scroll-px-6 sm:gap-6 sm:px-6 lg:-mx-4 lg:mt-4 lg:scroll-px-4 lg:px-4 [&::-webkit-scrollbar]:hidden"
       >
         {slides.map((child, index) => (
           <motion.div

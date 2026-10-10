@@ -89,6 +89,8 @@ export function EnquiryForm({
   });
 
   const currentType = useWatch({ control, name: "type" });
+  // On fixed-type company forms (B2B, dealer) email and company share a row, keeping the form to one screen.
+  const pairEmailWithCompany = !allowTypeSelection && COMPANY_FIELD_TYPES.includes(currentType);
 
   const onSubmit = async (values: EnquiryFormValues) => {
     setStatus("submitting");
@@ -131,7 +133,7 @@ export function EnquiryForm({
         <input id="website" type="text" tabIndex={-1} autoComplete="off" {...register("website")} />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <div>
           <Label htmlFor="name">
             {COMPANY_FIELD_TYPES.includes(currentType) ? "Contact person" : "Full name"}
@@ -152,7 +154,7 @@ export function EnquiryForm({
           <FieldError id="phone-error" message={errors.phone?.message} />
         </div>
 
-        <div className="sm:col-span-2">
+        <div className={pairEmailWithCompany ? undefined : "sm:col-span-2"}>
           <Label htmlFor="email">Email address</Label>
           <Input
             id="email"
@@ -179,7 +181,7 @@ export function EnquiryForm({
         )}
 
         {COMPANY_FIELD_TYPES.includes(currentType) && (
-          <div className="sm:col-span-2">
+          <div className={pairEmailWithCompany ? undefined : "sm:col-span-2"}>
             <Label htmlFor="company">Business / company name</Label>
             <Input id="company" error={errors.company?.message} {...register("company")} />
             <FieldError id="company-error" message={errors.company?.message} />
@@ -334,7 +336,12 @@ export function EnquiryForm({
             {currentType === "b2b" ? "Message / additional requirements" : "Message"}{" "}
             {currentType === "b2c" ? "(optional)" : ""}
           </Label>
-          <Textarea id="message" error={errors.message?.message} {...register("message")} />
+          <Textarea
+            id="message"
+            rows={3}
+            error={errors.message?.message}
+            {...register("message")}
+          />
           <FieldError id="message-error" message={errors.message?.message} />
         </div>
       </div>
@@ -345,7 +352,7 @@ export function EnquiryForm({
         </p>
       )}
 
-      <Button type="submit" className="mt-6 w-full sm:w-auto" disabled={status === "submitting"}>
+      <Button type="submit" className="mt-5 w-full sm:w-auto" disabled={status === "submitting"}>
         {status === "submitting" ? "Sending…" : submitLabel}
       </Button>
     </form>

@@ -47,15 +47,15 @@ export function ImmersiveBanner({
       />
 
       {/* Below `lg`: media window, then a fade into the copy panel. */}
-      <div aria-hidden="true" className="min-h-56 flex-1 sm:min-h-72 lg:hidden" />
-      <div aria-hidden="true" className="from-navy/0 to-navy/92 h-24 bg-linear-to-b lg:hidden" />
+      <div aria-hidden="true" className="min-h-40 flex-1 sm:min-h-64 lg:hidden" />
+      <div aria-hidden="true" className="from-navy/0 to-navy/92 h-16 bg-linear-to-b lg:hidden" />
 
       <motion.div
         variants={staggerContainer(0.12)}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="bg-navy/92 flex flex-col px-6 pb-8 sm:px-10 sm:pb-12 lg:flex-1 lg:bg-transparent lg:p-16 xl:px-20"
+        className="bg-navy/92 flex flex-col px-6 pb-8 sm:px-10 sm:pb-10 lg:flex-1 lg:bg-transparent lg:p-12 xl:px-20"
       >
         <div className="max-w-xl lg:my-auto lg:max-w-md xl:max-w-xl">
           <motion.p
@@ -80,7 +80,7 @@ export function ImmersiveBanner({
         </div>
 
         {(location || stat) && (
-          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-3">
+          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-3">
             {location && (
               <a
                 href={location.mapUrl}

@@ -11,8 +11,9 @@ const HEADING_ID = "store-gallery-heading";
 
 /**
  * Experience Center Section 01: a straight photo gallery of the showroom
- * floor, one 4:5 frame per area with its caption beneath. 2 × 2 below `lg`,
- * one row of four from `lg`, capped in width so the row fits one screen.
+ * floor, one frame per area with its caption beneath. 2 × 2 square frames on
+ * phones, one row of four 4:5 frames from `sm`, capped in width so the row
+ * fits one screen.
  */
 export function StoreGallery({ content }: { content: StoreGalleryContent }) {
   const { eyebrow, heading, description, items } = content;
@@ -31,12 +32,12 @@ export function StoreGallery({ content }: { content: StoreGalleryContent }) {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 sm:gap-6 lg:mt-14 lg:grid-cols-4"
+        className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-4 lg:mt-12 lg:gap-6"
       >
         {items.map((item) => (
           <motion.li key={item.id} variants={fadeUp}>
             <figure className="group">
-              <div className="bg-wood-sand relative aspect-4/5 overflow-hidden rounded-xl">
+              <div className="bg-wood-sand relative aspect-square overflow-hidden rounded-xl sm:aspect-4/5">
                 <Image
                   src={item.image.src}
                   alt={item.image.alt}
@@ -46,7 +47,7 @@ export function StoreGallery({ content }: { content: StoreGalleryContent }) {
                   style={{ objectPosition: item.image.objectPosition }}
                 />
               </div>
-              <figcaption className="text-navy mt-3 text-sm font-medium sm:text-base">
+              <figcaption className="text-navy mt-3 text-sm font-medium lg:text-base">
                 {item.caption}
               </figcaption>
             </figure>

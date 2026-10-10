@@ -54,7 +54,7 @@ export function PartnerSupportBand({
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="bg-navy focus-ring-gold relative isolate flex flex-col justify-center overflow-hidden px-6 py-12 sm:px-10 sm:py-14 lg:col-span-2 lg:px-12 xl:px-16"
+        className="bg-navy focus-ring-gold relative isolate flex flex-col justify-center overflow-hidden px-6 py-10 sm:px-10 lg:col-span-2 lg:px-12 xl:px-16"
       >
         {/* Soft gold glow, top-right corner. */}
         <div
@@ -85,7 +85,7 @@ export function PartnerSupportBand({
         </Link>
       </motion.div>
 
-      <div className="bg-cream flex items-center px-6 py-6 sm:px-10 sm:py-8 lg:col-span-3 lg:px-12 xl:px-16">
+      <div className="bg-cream flex items-center px-6 py-4 sm:px-10 sm:py-6 lg:col-span-3 lg:px-12 xl:px-16">
         <motion.ul
           variants={staggerContainer(0.08, 0.15)}
           initial="hidden"
@@ -101,7 +101,7 @@ export function PartnerSupportBand({
               <li key={pillar.id} className="group bg-cream">
                 <motion.div
                   variants={fadeUp}
-                  className="flex h-full items-start gap-4 py-6 sm:px-5 sm:py-7"
+                  className="flex h-full items-start gap-4 py-4 sm:px-5 sm:py-5 lg:py-6"
                 >
                   <IconBadge tone="gold">
                     <Icon className="size-6" />

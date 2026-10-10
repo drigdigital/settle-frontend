@@ -66,6 +66,19 @@
   --color-wood-walnut: #4a2f1d;
 
   --font-sans: var(--font-geist-sans);
+
+  /* Vertical section padding from `lg` (the `section` spacing token). */
+  --space-section: 4rem;
+}
+
+/*
+ * Short desktop screens (e.g. 1366 × 768 laptops): tighten section padding so
+ * each section, padding included, fits the space below the Navbar.
+ */
+@media (min-width: 1024px) and (max-height: 820px) {
+  :root {
+    --space-section: 2.5rem;
+  }
 }
 
 * {

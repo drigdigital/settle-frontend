@@ -37,9 +37,9 @@ export function VisitDetails({ content }: { content: VisitDetailsContent }) {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="bg-navy focus-ring-gold mt-6 grid gap-6 rounded-xl p-8 sm:p-10 lg:grid-cols-5 lg:items-center lg:gap-12"
+        className="bg-navy focus-ring-gold mt-4 grid gap-5 rounded-xl p-6 sm:grid-cols-5 sm:items-center sm:gap-10 sm:px-8 lg:gap-12 lg:px-10"
       >
-        <div className="lg:col-span-3">
+        <div className="sm:col-span-3">
           <h2
             id={HOURS_HEADING_ID}
             className="text-paper text-2xl font-semibold tracking-tight sm:text-3xl"
@@ -49,7 +49,7 @@ export function VisitDetails({ content }: { content: VisitDetailsContent }) {
           <p className="text-paper/80 mt-3 max-w-xl text-base">{hours.description}</p>
         </div>
 
-        <div className="lg:col-span-2">
+        <div className="sm:col-span-2">
           <dl className="space-y-3">
             {hours.slots.map((slot) => (
               <div

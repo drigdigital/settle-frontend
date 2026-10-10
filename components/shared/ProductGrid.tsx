@@ -6,7 +6,7 @@ import { staggerContainer, viewportOnce } from "@/lib/animations";
 import { cn } from "@/utils/cn";
 import type { Product } from "@/types/product";
 
-/** Staggered grid of ProductCards: 1 column on phones, 2 from `sm`, 3 from `lg`, 4 from `xl`. */
+/** Staggered grid of ProductCards: 2 columns on phones, 3 from `md`, 4 from `lg`. */
 export function ProductGrid({ products, className }: { products: Product[]; className?: string }) {
   if (products.length === 0) {
     return <p className="text-muted py-16 text-center">No products in this category yet.</p>;
@@ -18,7 +18,10 @@ export function ProductGrid({ products, className }: { products: Product[]; clas
       initial="hidden"
       whileInView="visible"
       viewport={viewportOnce}
-      className={cn("grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4", className)}
+      className={cn(
+        "grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4 xl:gap-6",
+        className,
+      )}
     >
       {products.map((product) => (
         <li key={product._id} className="flex">

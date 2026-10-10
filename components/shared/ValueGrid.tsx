@@ -64,7 +64,7 @@ export function ValueGrid({
           <li key={value.id} className="group bg-surface">
             <motion.div
               variants={fadeUp}
-              className="flex h-full flex-col items-center px-4 py-8 text-center text-balance sm:px-6 lg:px-8 lg:py-10"
+              className="flex h-full flex-col items-center px-4 py-6 text-center text-balance sm:px-6 sm:py-8 lg:px-8"
             >
               <IconBadge>
                 <Icon className="size-6" />

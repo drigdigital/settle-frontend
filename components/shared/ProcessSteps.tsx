@@ -17,7 +17,7 @@ export function ProcessSteps({ steps, className }: { steps: ProcessStep[]; class
       initial="hidden"
       whileInView="visible"
       viewport={viewportOnce}
-      className={cn("grid gap-8 lg:grid-cols-4 lg:gap-6", className)}
+      className={cn("grid gap-6 lg:grid-cols-4", className)}
     >
       {steps.map((step, index) => {
         const isLast = index === steps.length - 1;
@@ -31,7 +31,7 @@ export function ProcessSteps({ steps, className }: { steps: ProcessStep[]; class
             {!isLast && (
               <span
                 aria-hidden="true"
-                className="bg-gold/40 absolute top-12 -bottom-8 left-6 w-px lg:top-6 lg:right-0 lg:bottom-auto lg:left-12 lg:-mr-6 lg:h-px lg:w-auto"
+                className="bg-gold/40 absolute top-12 -bottom-6 left-6 w-px lg:top-6 lg:right-0 lg:bottom-auto lg:left-12 lg:-mr-6 lg:h-px lg:w-auto"
               />
             )}
             <span

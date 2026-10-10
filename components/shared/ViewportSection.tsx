@@ -36,7 +36,7 @@ export function ViewportSection({
       id={id}
       aria-labelledby={labelledBy}
       className={cn(
-        "min-h-viewport py-section-sm flex snap-start items-center overflow-hidden lg:py-16",
+        "min-h-viewport py-section-sm lg:py-section flex snap-start items-center overflow-hidden",
         TONE_CLASSES[tone],
         className,
       )}
