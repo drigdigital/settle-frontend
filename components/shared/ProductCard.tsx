@@ -52,7 +52,7 @@ export function ProductCard({ product }: { product: Product }) {
         )}
 
         {product.isPackage && (
-          <span className="bg-navy text-paper absolute top-2 left-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase sm:top-3 sm:left-3">
+          <span className="bg-primary text-ink absolute top-2 left-2 rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase sm:top-3 sm:left-3">
             Package
           </span>
         )}

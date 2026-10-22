@@ -36,7 +36,7 @@ export function ProcessSteps({ steps, className }: { steps: ProcessStep[]; class
             )}
             <span
               aria-hidden="true"
-              className="bg-navy text-gold-light relative flex size-12 shrink-0 items-center justify-center rounded-full text-sm font-semibold tracking-wider"
+              className="bg-primary text-ink relative flex size-12 shrink-0 items-center justify-center rounded-full text-sm font-semibold tracking-wider"
             >
               {String(index + 1).padStart(2, "0")}
             </span>

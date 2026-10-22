@@ -58,7 +58,7 @@ export function PartnerSupportBand({
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="bg-navy focus-ring-gold relative isolate flex flex-col justify-center overflow-hidden px-6 py-10 sm:px-10 lg:col-span-2 lg:px-12 xl:px-16"
+        className="surface-brand relative isolate flex flex-col justify-center overflow-hidden px-6 py-10 sm:px-10 lg:col-span-2 lg:px-12 xl:px-16"
       >
         {/* Soft gold glow, top-right corner. */}
         <div
@@ -114,7 +114,7 @@ export function PartnerSupportBand({
                     <h3 className="text-navy group-hover:text-gold-deep text-sm font-semibold transition-colors duration-300 sm:text-base">
                       {pillar.title}
                     </h3>
-                    <p className="text-navy/70 mt-1 text-sm">{pillar.description}</p>
+                    <p className="text-muted mt-1 text-sm">{pillar.description}</p>
                   </div>
                 </motion.div>
               </li>

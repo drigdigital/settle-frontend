@@ -1,4 +1,4 @@
-import type { AboutCtaContent, AboutLeadershipContent, AboutStory } from "@/types/about";
+import type { AboutCtaContent, AboutStory } from "@/types/about";
 import type { PageHeroContent } from "@/types/page";
 
 /**
@@ -140,20 +140,6 @@ export const ABOUT_STORIES: AboutStory[] = [
     tone: "navy",
   },
 ];
-
-/**
- * RESERVED — leadership names, designations, bios and photos have not been
- * shared yet. Add each person to `profiles` (name, title, 2–3 line bio,
- * square photo in public/images/leadership/) and the grid replaces the
- * reserved cards. Reserved titles are the examples listed in the content
- * document; adjust once the actual line-up is confirmed.
- */
-export const ABOUT_LEADERSHIP: AboutLeadershipContent = {
-  eyebrow: "Leadership",
-  heading: "The people behind Settle.",
-  profiles: [],
-  reservedTitles: ["Founder / Promoter", "Manufacturing Head", "Design Lead"],
-};
 
 export const ABOUT_CTA: AboutCtaContent = {
   heading: "Settle. Made in Coimbatore. Made for your home.",

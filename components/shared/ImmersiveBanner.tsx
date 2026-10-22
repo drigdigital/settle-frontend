@@ -35,7 +35,7 @@ export function ImmersiveBanner({
   return (
     <div
       className={cn(
-        "bg-navy focus-ring-gold min-h-banner lg:min-h-banner-lg relative isolate flex flex-col overflow-hidden rounded-xl",
+        "surface-navy min-h-banner lg:min-h-banner-lg relative isolate flex flex-col overflow-hidden rounded-xl",
         className,
       )}
     >

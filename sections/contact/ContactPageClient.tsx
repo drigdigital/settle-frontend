@@ -8,11 +8,11 @@ import { EnquiryForm } from "@/components/shared/EnquiryForm";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 
 /**
- * Smart routing (enquiry form) section. Same premium-background treatment as
- * ContactHero, but with a light overlay instead of a dark one — the section
- * still holds a form built from light `bg-surface` inputs (Input/Select/
- * Textarea), so a dark backdrop would fight the existing form styling
- * instead of the background image.
+ * Smart routing (enquiry form) section over a soft living-room photo. A light
+ * overlay keeps it subtle, since the form is built from light `bg-surface`
+ * inputs (Input/Select/Textarea) and its labels need to stay readable.
+ *
+ * PLACEHOLDER PHOTOGRAPHY — royalty-free stock photo (Unsplash License).
  */
 export function ContactPageClient() {
   return (
@@ -22,13 +22,13 @@ export function ContactPageClient() {
     >
       <div className="absolute inset-0">
         <Image
-          src="/images/placeholder.svg"
+          src="/images/hero/living-room-sofa-sunlit.jpg"
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-10"
+          className="object-cover"
         />
-        <div className="bg-surface/90 absolute inset-0" />
+        <div className="bg-surface/85 absolute inset-0" />
       </div>
 
       <Container className="relative">

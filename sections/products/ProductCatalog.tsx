@@ -138,13 +138,11 @@ export function ProductCatalog({
                 onClick={() => selectFamily(tab.id)}
                 className={cn(
                   "shrink-0 rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap transition-colors duration-200 sm:px-6",
-                  isActive ? "bg-navy text-paper" : "text-navy hover:bg-navy/5",
+                  isActive ? "bg-primary text-ink" : "text-navy hover:bg-navy/5",
                 )}
               >
                 {tab.name}
-                <span
-                  className={cn("ml-1.5 font-medium", isActive ? "text-paper/80" : "text-muted")}
-                >
+                <span className={cn("ml-1.5 font-medium", isActive ? "text-ink/80" : "text-muted")}>
                   {tab.count}
                 </span>
               </button>

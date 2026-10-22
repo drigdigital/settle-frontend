@@ -37,7 +37,7 @@ export function VisitDetails({ content }: { content: VisitDetailsContent }) {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="bg-navy focus-ring-gold mt-4 grid gap-5 rounded-xl p-6 sm:grid-cols-5 sm:items-center sm:gap-10 sm:px-8 lg:gap-12 lg:px-10"
+        className="surface-brand mt-4 grid gap-5 rounded-xl p-6 sm:grid-cols-5 sm:items-center sm:gap-10 sm:px-8 lg:gap-12 lg:px-10"
       >
         <div className="sm:col-span-3">
           <h2

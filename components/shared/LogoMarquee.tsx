@@ -71,7 +71,7 @@ export function LogoMarquee({
   return (
     <div className={className}>
       {label && (
-        <p id={labelId} className="text-navy/70 text-center text-sm font-medium tracking-wide">
+        <p id={labelId} className="text-muted text-center text-sm font-medium tracking-wide">
           {label}
         </p>
       )}

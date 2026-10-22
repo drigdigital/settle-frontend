@@ -33,14 +33,14 @@ export function ClosingCta({
     <section
       aria-labelledby={headingId}
       className={cn(
-        "bg-navy focus-ring-gold min-h-cta lg:min-h-cta-lg relative isolate flex items-center overflow-hidden",
+        "surface-brand min-h-cta lg:min-h-cta-lg relative isolate flex items-center overflow-hidden",
         className,
       )}
     >
       {image ? (
         <>
           <BackgroundMedia media={{ poster: image }} />
-          <div aria-hidden="true" className="bg-navy/90 absolute inset-0 -z-10" />
+          <div aria-hidden="true" className="bg-primary/90 absolute inset-0 -z-10" />
         </>
       ) : (
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">

@@ -6,24 +6,26 @@ import { Container } from "@/components/shared/Container";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 
 /**
- * Full-bleed image hero for the Contact page — same treatment as the
- * homepage Hero (sections/home/Hero.tsx): dark base + dimmed image + a solid
- * overlay on top so text contrast holds regardless of what the underlying
- * image looks like once real photography replaces the placeholder.
+ * Full-bleed image hero for the Contact page: a showroom photo under a dark
+ * left-to-right scrim, so the copy on the left keeps strong contrast while
+ * the room stays visible on the right (a stronger, even scrim on phones).
+ *
+ * PLACEHOLDER PHOTOGRAPHY — royalty-free stock photo (Unsplash License).
+ * Replace with a photo of a Settle showroom or plant.
  */
 export function ContactHero() {
   return (
     <section className="bg-ink text-paper relative overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/images/placeholder.svg"
+          src="/images/dealers-hero.jpg"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover opacity-30"
+          className="object-cover object-center"
         />
-        <div className="bg-ink/60 absolute inset-0" />
+        <div className="bg-ink/70 lg:from-ink/90 lg:via-ink/70 lg:to-ink/25 absolute inset-0 lg:bg-transparent lg:bg-linear-to-r" />
       </div>
 
       <Container className="py-section relative">

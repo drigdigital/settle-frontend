@@ -5,7 +5,7 @@ import { initials } from "@/utils/initials";
 import type { Testimonial, TestimonialType } from "@/types/testimonial";
 
 const TYPE_TAGS: Record<TestimonialType, { label: string; className: string }> = {
-  dealer: { label: "Dealer", className: "border-navy bg-navy text-paper" },
+  dealer: { label: "Dealer", className: "border-primary bg-primary text-ink" },
   // gold-deep text: plain gold on white is only 3:1.
   customer: { label: "Homeowner", className: "border-gold text-gold-deep" },
 };
@@ -71,14 +71,14 @@ export function TestimonialCard({
         ) : (
           <span
             aria-hidden="true"
-            className="bg-navy text-gold flex size-12 shrink-0 items-center justify-center rounded-full text-sm font-semibold"
+            className="bg-primary text-ink flex size-12 shrink-0 items-center justify-center rounded-full text-sm font-semibold"
           >
             {initials(name)}
           </span>
         )}
         <span className="min-w-0">
           <span className="text-navy block font-semibold">{name}</span>
-          <span className="text-navy/70 block text-sm">
+          <span className="text-muted block text-sm">
             {role}
             {product && ` · ${product}`}
           </span>

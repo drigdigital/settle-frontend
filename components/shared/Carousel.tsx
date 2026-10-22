@@ -36,7 +36,7 @@ const TONE_CLASSES = {
   // Navy arrows turning gold (navy icon on gold, 4.6:1), gold progress.
   navy: {
     arrow:
-      "bg-navy text-paper hover:bg-gold hover:text-navy disabled:hover:bg-navy disabled:hover:text-paper",
+      "bg-primary text-ink hover:bg-accent hover:text-paper disabled:hover:bg-primary disabled:hover:text-ink",
     pause: "border-navy/20 text-navy hover:border-gold-deep hover:text-gold-deep",
     rail: "bg-navy/10",
     thumb: "bg-gold",

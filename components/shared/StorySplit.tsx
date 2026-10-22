@@ -21,7 +21,7 @@ const TEXT_TONES = {
     eyebrow: "text-gold-light",
     heading: "text-paper",
     body: "text-paper/80",
-    ring: "ring-navy",
+    ring: "ring-primary",
     pointTitle: "text-paper",
     pointRule: "border-gold/60",
   },

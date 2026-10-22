@@ -40,15 +40,17 @@
   --color-success: #2e6b3e;
 
   /*
-   * PARTNER PALETTE — navy / gold / warm off-white, specified by the client
-   * for the retailer & dealer band (homepage Section 05), echoing the theme's
-   * About / Partner pages. gold-light is the hover fill; gold-deep is gold
-   * darkened along the same hue for text on cream (plain gold is only 2.6:1).
-   * WCAG 2.1 contrast: navy on gold 4.6:1 · navy on gold-light 5.9:1 ·
-   * gold on navy 4.6:1 · navy on cream 11.9:1 · navy/70 on cream 5.0:1 ·
+   * PARTNER PALETTE — gold / warm off-white, plus the brand text color.
+   * `navy` keeps its utility name but is now the logo's deep orange
+   * (#a0520d, same value as accent), replacing the earlier navy across
+   * headings, text, borders and tints on light backgrounds. Solid brand
+   * panels use the `surface-brand` utility below (logo orange #f5821f with
+   * dark text) instead of a navy fill. gold-light is the hover fill; gold-deep
+   * is gold darkened along the same hue for text on cream.
+   * WCAG 2.1 contrast: navy (#a0520d) on paper 5.6:1 · on cream 4.7:1 ·
    * gold-deep on cream 5.4:1.
    */
-  --color-navy: #1b2a4a;
+  --color-navy: #a0520d;
   --color-gold: #b08d57;
   --color-gold-light: #c4a26e;
   --color-gold-deep: #735b37;
@@ -95,7 +97,38 @@ body {
   outline-offset: 2px;
 }
 
-/* Switches focus rings inside a navy panel to gold (4.6:1 on navy; accent is too dark there). */
+/*
+ * Brand panel: the logo orange (#f5821f) with dark text. The panels' contents
+ * are written as light-on-dark (text-paper, gold eyebrows and buttons,
+ * outline-inverse buttons), so this remaps those tokens inside the panel:
+ * light text becomes ink (7.1:1 on the orange), gold eyebrows and buttons
+ * become near-black, and button labels and hover text become paper.
+ * Literal values, not var(--color-*), because those tokens are what's being
+ * remapped here.
+ */
+@utility surface-brand {
+  background-color: var(--color-primary);
+  --color-paper: #211d1a;
+  --color-ink: #faf8f5;
+  --color-navy: #faf8f5;
+  --color-gold: #211d1a;
+  --color-gold-light: #3a332d;
+  --color-gold-deep: #211d1a;
+  --focus-ring-color: #211d1a;
+}
+
+/*
+ * The original navy panel (#1b2a4a), kept for the homepage Our Plants banner.
+ * Restores the navy value inside the panel (the global `navy` token is now
+ * the brand orange-brown), so its overlays and gold-button labels stay navy.
+ */
+@utility surface-navy {
+  background-color: #1b2a4a;
+  --color-navy: #1b2a4a;
+  --focus-ring-color: var(--color-gold);
+}
+
+/* Switches focus rings inside a dark panel to gold. */
 @utility focus-ring-gold {
   --focus-ring-color: var(--color-gold);
 }

@@ -1,10 +1,9 @@
 import { ClosingCta } from "@/components/shared/ClosingCta";
 import { SplitHero } from "@/components/shared/SplitHero";
 import { StorySplit } from "@/components/shared/StorySplit";
-import { ABOUT_CTA, ABOUT_HERO, ABOUT_LEADERSHIP, ABOUT_STORIES } from "@/constants/about";
+import { ABOUT_CTA, ABOUT_HERO, ABOUT_STORIES } from "@/constants/about";
 import { SITE_CONFIG } from "@/constants/site";
 import { breadcrumbSchema, buildMetadata, organizationSchema } from "@/lib/seo";
-import { AboutLeadership } from "@/sections/about/AboutLeadership";
 
 const ABOUT_TITLE = "About Settle | Made in Coimbatore";
 
@@ -20,7 +19,7 @@ export const metadata = {
 };
 
 /**
- * About page: hero → brand story → manufacturing → range → quality → leadership →
+ * About page: hero → brand story → manufacturing → range → quality →
  * closing CTA, one focused screen each. [data-snap-page] opts this page into
  * gentle scroll snapping (app/globals.css). Content lives in constants/about.ts.
  */
@@ -45,7 +44,6 @@ export default function AboutPage() {
       {ABOUT_STORIES.map((story) => (
         <StorySplit key={story.id} story={story} />
       ))}
-      <AboutLeadership content={ABOUT_LEADERSHIP} />
       <ClosingCta content={ABOUT_CTA} className="snap-start" />
     </div>
   );

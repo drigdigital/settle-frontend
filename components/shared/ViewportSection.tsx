@@ -6,7 +6,8 @@ import type { SectionTone } from "@/types/page";
 const TONE_CLASSES: Record<SectionTone, string> = {
   paper: "bg-paper",
   linen: "bg-linen",
-  navy: "bg-navy focus-ring-gold",
+  // Logo-orange panel with dark text (app/globals.css). The tone keeps its old name.
+  navy: "surface-brand",
 };
 
 /**
