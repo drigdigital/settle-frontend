@@ -4,13 +4,15 @@ import type { PageImage } from "./page";
 export interface GalleryItem {
   id: string;
   image: PageImage;
+  /** Bold lead-in shown above the caption ("Plant walkthrough"). */
+  title?: string;
   caption: string;
 }
 
 export interface StoreGalleryContent {
   eyebrow: string;
   heading: string;
-  description: string;
+  description?: string;
   items: GalleryItem[];
 }
 
@@ -23,7 +25,7 @@ export interface VisitLocation {
 
 export interface VisitDetailsContent {
   heading: string;
-  description: string;
+  description?: string;
   location: VisitLocation;
   hours: {
     heading: string;

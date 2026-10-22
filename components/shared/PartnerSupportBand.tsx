@@ -8,7 +8,9 @@ import { IconBadge } from "@/components/ui/IconBadge";
 import {
   ArrowRightIcon,
   BadgeCheckIcon,
+  FactoryIcon,
   HandshakeIcon,
+  LayersIcon,
   MegaphoneIcon,
   MonitorIcon,
   StoreIcon,
@@ -25,6 +27,8 @@ const ICONS: Record<PartnerPillarIcon, ComponentType<SVGProps<SVGSVGElement>>> =
   megaphone: MegaphoneIcon,
   "badge-check": BadgeCheckIcon,
   truck: TruckIcon,
+  layers: LayersIcon,
+  factory: FactoryIcon,
 };
 
 /**

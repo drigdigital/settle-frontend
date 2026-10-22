@@ -19,7 +19,7 @@ export interface EnquiryFormProps {
   page: string;
   product?: { id: string; name: string; slug: string };
   className?: string;
-  /** Shows the "I'm getting in touch with" dropdown and lets the visitor pick the enquiry type themselves. */
+  /** Shows the "I’m getting in touch about" dropdown and lets the visitor pick the enquiry type themselves. */
   allowTypeSelection?: boolean;
   submitLabel?: string;
 }
@@ -29,16 +29,17 @@ const COMPANY_FIELD_TYPES: EnquiryType[] = ["b2b", "dealer"];
 const ENQUIRY_TYPE_OPTIONS: { value: EnquiryType; label: string }[] = [
   { value: "general", label: "General" },
   { value: "b2c", label: "Retail Purchase" },
-  { value: "b2b", label: "Bulk & B2B Order" },
-  { value: "dealer", label: "Dealer Partnership" },
-  { value: "walkthrough", label: "Experience Center Visit" },
+  { value: "b2b", label: "Business & Bulk Order" },
+  { value: "dealer", label: "Dealer or Distributor Partnership" },
+  { value: "walkthrough", label: "Plant Visit" },
   { value: "support", label: "Support" },
 ];
 
 const BUSINESS_TYPE_OPTIONS: { value: BusinessType; label: string }[] = [
   { value: "retailer", label: "Furniture Retailer" },
-  { value: "new-business", label: "New Business" },
+  { value: "distributor", label: "Distributor" },
   { value: "interior-design", label: "Interior Design Firm" },
+  { value: "new-business", label: "New Business" },
   { value: "other", label: "Other" },
 ];
 
@@ -168,7 +169,7 @@ export function EnquiryForm({
 
         {allowTypeSelection && (
           <div className="sm:col-span-2">
-            <Label htmlFor="type">I&apos;m getting in touch with</Label>
+            <Label htmlFor="type">I’m getting in touch about</Label>
             <Select id="type" error={errors.type?.message} {...register("type")}>
               {ENQUIRY_TYPE_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -182,7 +183,9 @@ export function EnquiryForm({
 
         {COMPANY_FIELD_TYPES.includes(currentType) && (
           <div className={pairEmailWithCompany ? undefined : "sm:col-span-2"}>
-            <Label htmlFor="company">Business / company name</Label>
+            <Label htmlFor="company">
+              {currentType === "dealer" ? "Business name" : "Business / company name"}
+            </Label>
             <Input id="company" error={errors.company?.message} {...register("company")} />
             <FieldError id="company-error" message={errors.company?.message} />
           </div>
@@ -191,7 +194,7 @@ export function EnquiryForm({
         {currentType === "dealer" && (
           <>
             <div>
-              <Label htmlFor="city">Business location / city</Label>
+              <Label htmlFor="city">Location / city</Label>
               <Input id="city" error={errors.city?.message} {...register("city")} />
               <FieldError id="city-error" message={errors.city?.message} />
             </div>

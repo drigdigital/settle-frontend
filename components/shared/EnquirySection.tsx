@@ -24,7 +24,7 @@ export function EnquirySection({
   contact,
   image,
 }: {
-  /** Anchor target (e.g. "book" for /experience-center#book); also prefixes the heading id. */
+  /** Anchor target (e.g. "book" for /our-plants#book); also prefixes the heading id. */
   id: string;
   tone?: "paper" | "linen";
   content: EnquirySectionContent;

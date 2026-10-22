@@ -11,17 +11,16 @@ import type { ShowcaseItem } from "@/types/showcase";
  * in public/images/showcase/. Swap the files or `src`, and update `alt` to match.
  */
 export const SHOWCASE_CONTENT = {
-  heading: "Our five most-loved pieces.",
-  subtext:
-    "A quick showcase of the Settle designs customers return to, spanning bedroom, living and dining.",
-  viewAll: { label: "View All Collections", href: "/collections" },
+  heading: "Our most loved pieces.",
+  subtext: "The designs customers come back for, across bedroom, living and dining.",
+  viewAll: { label: "View All Products", href: "/collections" },
 } as const;
 
 export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "aura-wardrobe",
     name: "Aura Wardrobe",
-    category: "Wardrobes",
+    category: "Modular",
     description:
       "The wardrobe that opens our range: two doors, six finishes from warm Oak to deep Cherry, and no wasted detail.",
     href: "/collections/wardrobes/wardrobes-aura",
@@ -34,7 +33,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "barnet-wooden-sofa",
     name: "Barnet Wooden Sofa",
-    category: "Wooden Sofas",
+    category: "Wooden",
     description:
       "Angular wood frame, tufted cushions, a 3+1+1 set that gives a living room some backbone.",
     href: "/collections/wooden-sofas/wooden-sofas-barnet",
@@ -47,7 +46,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "munich-sofa-cum-bed",
     name: "Munich Sofa Cum Bed",
-    category: "Sofa Cum Beds",
+    category: "Upholstered",
     description:
       "Folds out into a full bed in seconds, for a living room that needs to pull double duty.",
     href: "/collections/sofa-cum-beds/sofa-cum-beds-munich",
@@ -60,7 +59,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "wales-dining-set",
     name: "Wales Dining Set",
-    category: "Dining",
+    category: "Wooden",
     description:
       "Built for gathering: a sturdy wood table paired with upholstered chairs that hold up to daily family meals.",
     href: "/collections/dining-sets/dining-sets-wales",
@@ -73,7 +72,7 @@ export const SHOWCASE_ITEMS: ShowcaseItem[] = [
   {
     id: "wylam-center-table",
     name: "Wylam Center Table",
-    category: "Center Tables",
+    category: "Wooden",
     description:
       "Round top, crossed base, the kind of finishing piece a living room needs and rarely gets right.",
     href: "/collections/center-tables/center-tables-wylam",

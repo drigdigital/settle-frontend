@@ -8,7 +8,7 @@ export const PRIMARY_NAV: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Products", href: "/collections" },
   { label: "For Businesses", href: "/business" },
-  { label: "Experience Center", href: "/experience-center" },
+  { label: "Our Plants", href: "/our-plants" },
   { label: "Dealers", href: "/dealers" },
   { label: "Contact", href: "/contact" },
 ];
@@ -19,7 +19,7 @@ export const FOOTER_LINKS: { title: string; links: NavLink[] }[] = [
     links: [
       { label: "Products", href: "/collections" },
       { label: "About Settle", href: "/about" },
-      { label: "Experience Center", href: "/experience-center" },
+      { label: "Our Plants", href: "/our-plants" },
     ],
   },
   {
@@ -33,7 +33,7 @@ export const FOOTER_LINKS: { title: string; links: NavLink[] }[] = [
     title: "Support",
     links: [
       { label: "Contact Us", href: "/contact" },
-      { label: "Book a Walkthrough", href: "/experience-center" },
+      { label: "Book A Plant Visit", href: "/our-plants#book" },
     ],
   },
 ];

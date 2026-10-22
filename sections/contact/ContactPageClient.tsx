@@ -42,7 +42,7 @@ export function ContactPageClient() {
           <motion.div variants={fadeUp}>
             <SectionHeading
               eyebrow="Smart routing"
-              title="Send us an enquiry"
+              title="Send us a message"
               description="Tell us what you need and we'll route it to the right department automatically."
             />
           </motion.div>

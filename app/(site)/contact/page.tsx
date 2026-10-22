@@ -2,16 +2,21 @@ import { ContactHero } from "@/sections/contact/ContactHero";
 import { ContactPageClient } from "@/sections/contact/ContactPageClient";
 import { WhatsAppQuickConnect } from "@/sections/contact/WhatsAppQuickConnect";
 import { LocationSection } from "@/sections/contact/LocationSection";
-import { DepartmentDirectory } from "@/sections/contact/DepartmentDirectory";
 import { ContactFinalCTA } from "@/sections/contact/ContactFinalCTA";
 import { buildMetadata, localBusinessSchema } from "@/lib/seo";
 
-export const metadata = buildMetadata({
-  title: "Contact Us",
-  description:
-    "Get in touch with Settle Furnitures — sales, support, dealer, and showroom enquiries.",
-  path: "/contact",
-});
+const CONTACT_TITLE = "Contact Settle | Sales, Support & Partnerships";
+
+// `absolute` skips the root layout's "%s | Settle Furnitures" template so the approved title renders as written.
+export const metadata = {
+  ...buildMetadata({
+    title: CONTACT_TITLE,
+    description:
+      "Get in touch with the Settle team for purchases, bulk orders, partnerships and plant visits.",
+    path: "/contact",
+  }),
+  title: { absolute: CONTACT_TITLE },
+};
 
 export default function ContactPage() {
   const schema = localBusinessSchema({
@@ -32,7 +37,7 @@ export default function ContactPage() {
       <ContactPageClient />
       <WhatsAppQuickConnect />
       <LocationSection />
-      <DepartmentDirectory />
+      {/* DealerPrompt ("Looking for a dealer near you?") is hidden until the dealer locator exists. */}
       <ContactFinalCTA />
     </>
   );

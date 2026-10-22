@@ -10,12 +10,18 @@ import { ExperienceCenterPreview } from "@/sections/home/ExperienceCenterPreview
 import { Testimonials } from "@/sections/home/Testimonials";
 import { FinalCTA } from "@/sections/home/FinalCTA";
 
-export const metadata = buildMetadata({
-  title: "Premium Furniture Showroom",
-  description:
-    "Browse Settle Furnitures' collection of seasoned Mahogany and Teak wardrobes, sofas, dining sets and more.",
-  path: "/",
-});
+const HOME_TITLE = "Settle Furniture | Wardrobes, Sofas, Cots & Dining Sets Made in Coimbatore";
+
+// `absolute` skips the root layout's "%s | Settle Furnitures" template so the approved title renders as written.
+export const metadata = {
+  ...buildMetadata({
+    title: HOME_TITLE,
+    description:
+      "Furniture that feels like home from day one. Shop wardrobes, sofas, cots and dining sets made in Coimbatore, with a 1-year warranty.",
+    path: "/",
+  }),
+  title: { absolute: HOME_TITLE },
+};
 
 export default async function HomePage() {
   const [rangeProducts, testimonials] = await Promise.all([

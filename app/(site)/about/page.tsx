@@ -6,15 +6,21 @@ import { SITE_CONFIG } from "@/constants/site";
 import { breadcrumbSchema, buildMetadata, organizationSchema } from "@/lib/seo";
 import { AboutLeadership } from "@/sections/about/AboutLeadership";
 
-export const metadata = buildMetadata({
-  title: "About Us",
-  description:
-    "Settle Furniture is a Vaanam Furniture brand, part of the Martin Group, Coimbatore: furniture made in-house for real, lived-in homes across India.",
-  path: "/about",
-});
+const ABOUT_TITLE = "About Settle | Made in Coimbatore";
+
+// `absolute` skips the root layout's "%s | Settle Furnitures" template so the approved title renders as written.
+export const metadata = {
+  ...buildMetadata({
+    title: ABOUT_TITLE,
+    description:
+      "Settle makes everyday furniture for real homes: honest materials, clean design and fair prices, made in Coimbatore.",
+    path: "/about",
+  }),
+  title: { absolute: ABOUT_TITLE },
+};
 
 /**
- * About page: hero → brand story → manufacturing → quality → leadership →
+ * About page: hero → brand story → manufacturing → range → quality → leadership →
  * closing CTA, one focused screen each. [data-snap-page] opts this page into
  * gentle scroll snapping (app/globals.css). Content lives in constants/about.ts.
  */

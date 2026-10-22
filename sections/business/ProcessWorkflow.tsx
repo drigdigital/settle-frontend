@@ -5,7 +5,7 @@ import type { BusinessSection, ProcessStep } from "@/types/business";
 
 const HEADING_ID = "process-heading";
 
-/** For Businesses Section 03: the four-step order process. */
+/** For Businesses Section 03: the three-step "How to get started" process. */
 export function ProcessWorkflow({ content }: { content: BusinessSection<ProcessStep> }) {
   const { eyebrow, heading, description, items } = content;
 
@@ -17,7 +17,7 @@ export function ProcessWorkflow({ content }: { content: BusinessSection<ProcessS
         heading={heading}
         description={description}
       />
-      <ProcessSteps steps={items} className="mt-8 lg:mt-12" />
+      <ProcessSteps steps={items} className="mt-8 lg:mt-12 lg:grid-cols-3" />
     </ViewportSection>
   );
 }

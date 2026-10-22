@@ -10,10 +10,10 @@ import type { StoreGalleryContent } from "@/types/experienceCenter";
 const HEADING_ID = "store-gallery-heading";
 
 /**
- * Experience Center Section 01: a straight photo gallery of the showroom
- * floor, one frame per area with its caption beneath. 2 × 2 square frames on
- * phones, one row of four 4:5 frames from `sm`, capped in width so the row
- * fits one screen.
+ * Our Plants Section 01 ("What you can see"): one photo per stop on a plant
+ * visit, with its caption beneath. Two square frames per row on phones and
+ * tablets (an odd last frame centres on its own row), one row of 4:5 frames
+ * from `lg`, capped in width so the row fits one screen.
  */
 export function StoreGallery({ content }: { content: StoreGalleryContent }) {
   const { eyebrow, heading, description, items } = content;
@@ -32,23 +32,34 @@ export function StoreGallery({ content }: { content: StoreGalleryContent }) {
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="mx-auto mt-8 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-4 lg:mt-12 lg:gap-6"
+        className="mx-auto mt-8 grid max-w-6xl grid-cols-2 gap-4 lg:mt-12 lg:grid-cols-5 lg:gap-6"
       >
         {items.map((item) => (
-          <motion.li key={item.id} variants={fadeUp}>
+          <motion.li
+            key={item.id}
+            variants={fadeUp}
+            className="odd:last:col-span-2 odd:last:mx-auto odd:last:w-1/2 lg:odd:last:col-span-1 lg:odd:last:w-auto"
+          >
             <figure className="group">
-              <div className="bg-wood-sand relative aspect-square overflow-hidden rounded-xl sm:aspect-4/5">
+              <div className="bg-wood-sand relative aspect-square overflow-hidden rounded-xl lg:aspect-4/5">
                 <Image
                   src={item.image.src}
                   alt={item.image.alt}
                   fill
-                  sizes="(min-width: 1024px) 15rem, 45vw"
+                  sizes="(min-width: 1024px) 14rem, 45vw"
                   className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
                   style={{ objectPosition: item.image.objectPosition }}
                 />
               </div>
-              <figcaption className="text-navy mt-3 text-sm font-medium lg:text-base">
-                {item.caption}
+              <figcaption className="mt-3 text-sm lg:text-base">
+                {item.title ? (
+                  <>
+                    <span className="text-navy font-semibold">{item.title}</span>
+                    <span className="text-muted block">{item.caption}</span>
+                  </>
+                ) : (
+                  <span className="text-navy font-medium">{item.caption}</span>
+                )}
               </figcaption>
             </figure>
           </motion.li>

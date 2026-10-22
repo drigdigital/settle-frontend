@@ -5,28 +5,26 @@ import type { ProductsHeroContent } from "@/types/page";
  * Products page copy (/collections). The products themselves — names,
  * categories, descriptions, finishes, dimensions, prices — are catalog data
  * from SETTLE_FURNITURE_TOP_FEATURED_PRODUCTS.md, served by
- * services/products.ts, never hardcoded here. The intro only lists the
- * categories in that file; the closing CTA reuses the approved Experience
- * Center line and labels from the content document.
+ * services/products.ts, never hardcoded here. Headline and intro are verbatim
+ * from "Settle Furniture content.docx" (PRODUCTS PAGE); the range families
+ * and their copy live in constants/productFamilies.ts.
  */
 export const PRODUCTS_HERO: ProductsHeroContent = {
   eyebrow: "Products",
-  heading: "Featured Products",
+  heading: "The Settle collection.",
   intro:
-    "Wardrobes, bedroom packages, sofas, cots, dining and center tables from the Settle range. Prices are shown where listed, and every piece can be enquired about directly.",
+    "Three families of furniture, one standard of quality. Browse by category to find what your home needs.",
   primaryCta: { label: "Browse Products", href: "#products" },
-  secondaryCta: { label: "Plan Your Visit", href: "/experience-center#book" },
+  secondaryCta: { label: "Plan Your Visit", href: "/our-plants#book" },
 };
 
 export const PRODUCTS_CATALOG = {
   eyebrow: "Browse",
-  heading: "Browse by category",
-  description:
-    "Pick a category, open any piece for its full details, or send an enquiry straight from the card.",
+  heading: "Browse the collection",
 } as const;
 
 export const PRODUCTS_CTA: ClosingCtaContent = {
-  heading: "Settle Furniture. See it, touch it, then take it home.",
-  primaryCta: { label: "Plan Your Visit", href: "/experience-center#book" },
+  heading: "Made in Coimbatore. See it, touch it, then take it home.",
+  primaryCta: { label: "Plan Your Visit", href: "/our-plants#book" },
   secondaryCta: { label: "Get In Touch", href: "/contact" },
 };

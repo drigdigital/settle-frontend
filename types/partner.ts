@@ -1,6 +1,6 @@
 /** Icon keys for partner support pillars — mapped to SVG components in the component, so data stays serializable. */
 export type PartnerPillarIcon =
-  "handshake" | "monitor" | "store" | "megaphone" | "badge-check" | "truck";
+  "handshake" | "monitor" | "store" | "megaphone" | "badge-check" | "truck" | "layers" | "factory";
 
 export interface PartnerPillar {
   id: string;

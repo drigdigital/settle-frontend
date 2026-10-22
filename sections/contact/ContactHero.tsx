@@ -33,20 +33,21 @@ export function ContactHero() {
           animate="visible"
           className="max-w-2xl"
         >
-          <motion.h1
+          <motion.p
             variants={fadeUp}
-            className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl"
+            className="text-paper/70 text-sm font-semibold tracking-widest uppercase"
           >
             Contact Us
-          </motion.h1>
-          <motion.p variants={fadeUp} className="mt-4 text-xl font-medium sm:text-2xl">
-            Reach the right team, the first time.
           </motion.p>
+          <motion.h1
+            variants={fadeUp}
+            className="mt-4 text-4xl font-semibold tracking-tight text-balance sm:text-5xl"
+          >
+            Reach the right team, the first time.
+          </motion.h1>
           <motion.p variants={fadeUp} className="text-paper/80 mt-6 max-w-xl text-lg">
-            Whether you&apos;re furnishing a home, placing a bulk order, applying as a dealer, or
-            just have a question, Settle&apos;s Coimbatore team is easy to reach. Use the form below
-            and we&apos;ll route your enquiry to the right department, or contact a department
-            directly.
+            Furnishing a home, placing a bulk order, becoming a partner or planning a plant visit:
+            tell us what you need and we’ll route it to the right person.
           </motion.p>
         </motion.div>
       </Container>

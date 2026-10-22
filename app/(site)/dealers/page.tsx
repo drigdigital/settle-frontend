@@ -17,12 +17,17 @@ const DEALER_CONTACT = DEPARTMENT_CONTACTS.find(
   (contact) => contact.department === "dealer-relations",
 );
 
-export const metadata = buildMetadata({
-  title: "Dealers & Partners",
-  description:
-    "Become a Settle Furniture dealer, backed by Vaanam Furniture's in-house manufacturing across Chera, Settle and Kov.",
-  path: "/dealers",
-});
+const DEALERS_TITLE = "Become a Settle Partner | Find a Dealer";
+
+// `absolute` skips the root layout's "%s | Settle Furnitures" template so the approved title renders as written.
+export const metadata = {
+  ...buildMetadata({
+    title: DEALERS_TITLE,
+    description: "Join the Settle dealer network, or find a Settle dealer near you.",
+    path: "/dealers",
+  }),
+  title: { absolute: DEALERS_TITLE },
+};
 
 /**
  * Dealers & Partners page: hero → dealer benefits → support structure →

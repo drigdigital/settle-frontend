@@ -1,6 +1,7 @@
 export type EnquiryType = "general" | "b2c" | "b2b" | "dealer" | "walkthrough" | "support";
 
-export type BusinessType = "retailer" | "new-business" | "interior-design" | "other";
+export type BusinessType =
+  "retailer" | "distributor" | "new-business" | "interior-design" | "other";
 
 export type VisitPurpose = "personal" | "dealer" | "bulk-order";
 

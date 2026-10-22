@@ -8,7 +8,7 @@ const STATIC_ROUTES = [
   "/about",
   "/collections",
   "/business",
-  "/experience-center",
+  "/our-plants",
   "/dealers",
   "/contact",
 ];

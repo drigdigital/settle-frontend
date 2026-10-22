@@ -1,55 +1,56 @@
 import type { PartnerHighlightContent, PartnerPillar } from "@/types/partner";
 
 /**
- * Homepage Section 05 — retailer & dealer support band.
+ * Homepage Section 05 — "Partner With Settle" business strip.
  *
  * CTA LINK — points at the dealer application form on /dealers until a
  * dedicated partner page exists. Swap `cta.href` to "/partner" (or
  * "/become-a-partner") once that route is built.
  */
 export const PARTNER_HIGHLIGHT: PartnerHighlightContent = {
-  eyebrow: "For Retailers & Dealers",
-  heading: "Built to support the retailers who carry us.",
+  eyebrow: "For dealers, distributors and businesses",
+  heading: "Partner with Settle.",
   subtext:
-    "We back every retailer and dealer who stocks Settle with the pricing, support and reliability it takes to keep a showroom floor moving.",
+    "Wooden, modular and upholstered furniture from one manufacturer, supplied through five warehouses and backed by a team that stays with you after the sale.",
   cta: { label: "Become A Settle Partner", href: "/dealers#apply" },
 };
 
 export const PARTNER_PILLARS: PartnerPillar[] = [
   {
-    id: "empowering-partnership",
+    id: "empowering-partnerships",
     icon: "handshake",
-    title: "Empowering Partnership",
-    description: "A relationship built on shared growth, not just supply orders.",
+    title: "Empowering Partnerships",
+    description: "Growth we build together.",
   },
   {
-    id: "online-b2b-access",
-    icon: "monitor",
-    title: "Online B2B Access",
-    description: "Browse the full catalog and track orders from a single dealer portal.",
+    id: "one-manufacturer-three-ranges",
+    icon: "layers",
+    title: "One Manufacturer, Three Ranges",
+    description: "Wooden, modular and upholstered furniture through a single relationship.",
   },
   {
-    id: "store-design-support",
-    icon: "store",
-    title: "Store Design Support",
-    description: "Hands-on guidance for laying out and merchandising Settle inside your showroom.",
-  },
-  {
-    id: "marketing-activities",
-    icon: "megaphone",
-    title: "Marketing Activities",
-    description: "Co-branded campaigns and launch support, so you're not selling us alone.",
-  },
-  {
-    id: "quality-assurance",
-    icon: "badge-check",
-    title: "Quality Assurance",
-    description: "Every piece checked before it ever leaves our Coimbatore facility.",
-  },
-  {
-    id: "logistic-fulfillment",
+    id: "five-warehouses",
     icon: "truck",
-    title: "Logistic Fulfillment",
-    description: "Delivery timelines you can plan around, so your floor's never short.",
+    title: "Five Warehouses, Zone-Wise Delivery",
+    description: "Planned delivery timelines, so your floor is never short.",
+  },
+  {
+    id: "marketing-support",
+    icon: "megaphone",
+    title: "Marketing Support",
+    description: "Co-branded campaigns and launch material that help new collections sell.",
+  },
+  {
+    id: "reliable-supply",
+    icon: "factory",
+    title: "Reliable Supply",
+    description: "Steady stock from our own plants.",
+  },
+  {
+    id: "quality-after-sales",
+    icon: "badge-check",
+    title: "Quality And After-Sales Service",
+    description:
+      "Every piece checked before it leaves Coimbatore, with service support once it’s delivered.",
   },
 ];

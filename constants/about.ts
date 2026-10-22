@@ -2,10 +2,9 @@ import type { AboutCtaContent, AboutLeadershipContent, AboutStory } from "@/type
 import type { PageHeroContent } from "@/types/page";
 
 /**
- * About page content, from the approved Settle_Furniture_Website_Content
- * document (About page section). Headings and body copy are verbatim; the
- * hero strip and section eyebrows restate facts from that copy and add no
- * new claims.
+ * About page content, from the approved "Settle Furniture content.docx"
+ * (About page section). Headings and body copy are verbatim; the hero strip
+ * and section eyebrows are not in that document.
  *
  * PLACEHOLDER PHOTOGRAPHY — images already in public/images/ (also used on
  * the homepage and Experience Center page). Replace with Settle's own
@@ -15,7 +14,7 @@ export const ABOUT_HERO: PageHeroContent = {
   eyebrow: "About Settle",
   heading: "Furniture that feels like it was always meant to be in your home.",
   intro:
-    "Settle Furniture is a furniture brand under Vaanam Furniture, part of the Martin Group, Coimbatore that acts as a Subsidiary company of Vaanam. Where Vaanam brings the manufacturing scale behind three furniture brands, Settle brings that same strength into everyday homes, furniture for people furnishing real, lived-in spaces across India.",
+    "Settle makes everyday furniture for real, lived-in homes: wardrobes, sofas, cots, dining sets and more. Honest materials, clean design and fair prices, made in Coimbatore.",
   image: {
     src: "/images/experience-center-hero.jpg",
     alt: "Furniture showroom floor with a grey sectional sofa, recliners and lounge seating on display",
@@ -46,8 +45,8 @@ export const ABOUT_STORIES: AboutStory[] = [
   {
     id: "brand-story",
     eyebrow: "Our Story",
-    heading: "A brand built to feel instantly at home.",
-    body: "Settle Furniture was created on a simple idea: furniture should feel like it belongs the moment it arrives, not after months of getting used to it. As one of three brands under Vaanam, alongside Chera and Kov, Settle was designed for homes that want trend-aware style without the wait, and honest quality without the premium price tag.",
+    heading: "An idea that started simple",
+    body: "Furniture should feel like it belongs the moment it arrives, not after months of getting used to it. That one idea shaped everything about Settle: pieces that look good without trying too hard, fit the way families actually live, and don’t ask you to pay for things you don’t need.",
     images: [
       {
         src: "/images/hero/living-room-sofa-sunlit.jpg",
@@ -61,8 +60,8 @@ export const ABOUT_STORIES: AboutStory[] = [
   {
     id: "manufacturing",
     eyebrow: "Manufacturing",
-    heading: "Manufactured with intent, in Coimbatore.",
-    body: "Every piece that carries the Settle Furniture name comes off Vaanam's own manufacturing floor in Coimbatore, from wardrobes and bedroom packages to sofas across the Eco, Prime and Ultra lines, recliners and dining sets. Raw material sourcing, construction and finishing all happen in-house, which keeps quality and consistency in Settle's hands at every stage, not outsourced to a third party.",
+    heading: "Made in Coimbatore",
+    body: "Every Settle piece is made in Coimbatore. Raw material sourcing, construction and finishing all happen in our own plants, so we know exactly what goes into each piece and who made it. Nothing is handed to a third party and nothing is left to chance.",
     // One frame per range the copy names: bedroom packages, sofas, recliners, dining sets.
     images: [
       {
@@ -86,10 +85,46 @@ export const ABOUT_STORIES: AboutStory[] = [
     tone: "paper",
   },
   {
+    id: "range",
+    eyebrow: "Our Range",
+    heading: "Built for how homes really work",
+    body: "A compact 2-door wardrobe for a smaller bedroom. A sofa-cum-bed for a living room that has to do double duty. A dining set that can take a family meal every single day. Our range is designed around real rooms and real routines, across three families of furniture:",
+    points: [
+      { id: "wooden", title: "Wooden", body: "cots, dining sets, wooden sofas and center tables" },
+      { id: "modular", title: "Modular", body: "wardrobes and bedroom packages" },
+      {
+        id: "upholstered",
+        title: "Upholstered",
+        body: "sofas in our Eco, Prime and Ultra lines, plus sofa-cum-beds and recliners",
+      },
+    ],
+    // One frame per family the copy names, plus the sofa-cum-bed it calls out.
+    images: [
+      {
+        src: "/images/featured-range/brampton-wooden-cot-bedroom.jpg",
+        alt: "Wooden cot with white bedding and a matching bedside table in a sunlit bedroom",
+      },
+      {
+        src: "/images/showcase/wylam-round-wooden-center-table.jpg",
+        alt: "Round wooden center table in a sunlit living room",
+      },
+      {
+        src: "/images/featured-range/berlin-eco-grey-fabric-sofa.jpg",
+        alt: "Grey fabric sofa on tapered wooden legs in a bright living room",
+      },
+      {
+        src: "/images/featured-range/stockholm-grey-sofa-cum-bed.jpg",
+        alt: "Grey tufted sofa cum bed with an adjustable back, in a compact living room",
+      },
+    ],
+    imageSide: "left",
+    tone: "linen",
+  },
+  {
     id: "quality",
     eyebrow: "Quality",
-    heading: "Quality held to one standard, always.",
-    body: "Settle is checked against the same quality benchmark as every brand in the Vaanam group, verified at each stage of production rather than only at final inspection. Whether it's an entry-level Aura wardrobe or a Munich sofa-cum-bed, the piece that reaches a home is held to the same standard as the piece before it.",
+    heading: "One standard, every piece",
+    body: "Quality at Settle isn’t a final inspection. It’s checked at each stage of production, from the first cut to the final finish, so the piece that reaches your home is held to the same standard as the one before it. Every piece also comes with a one-year manufacturing warranty.",
     // The two pieces the copy names.
     images: [
       {
@@ -101,7 +136,7 @@ export const ABOUT_STORIES: AboutStory[] = [
         alt: "Sofa with cushions and bedding in afternoon sunlight",
       },
     ],
-    imageSide: "left",
+    imageSide: "right",
     tone: "navy",
   },
 ];
@@ -121,6 +156,6 @@ export const ABOUT_LEADERSHIP: AboutLeadershipContent = {
 };
 
 export const ABOUT_CTA: AboutCtaContent = {
-  heading: "Settle Furniture. Built in Coimbatore. Made for your home.",
+  heading: "Settle. Made in Coimbatore. Made for your home.",
   primaryCta: { label: "Discover Our Collection", href: "/collections" },
 };

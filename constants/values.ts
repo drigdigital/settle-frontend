@@ -1,39 +1,35 @@
 import type { BrandValue } from "@/types/brand";
 
-/** Homepage Section 02 — brand value proposition strip. */
-export const BRAND_VALUES_HEADING = "Why homes across India choose Settle.";
+/** Homepage Section 02 — "Why Settle" value strip. */
+export const BRAND_VALUES_HEADING = "Made in Coimbatore. Made to last.";
 
 export const BRAND_VALUES: BrandValue[] = [
   {
-    id: "in-house-manufacturing",
+    id: "own-plants",
     icon: "factory",
-    title: "In-House Manufacturing",
-    shortLine: "Made on Vaanam's own floor",
+    title: "Made In Our Own Plants",
     description:
-      "In-house manufacturing, every piece made on Vaanam's own factory floor in Coimbatore, so quality stays in our hands from raw wood to finished product.",
+      "Every piece is cut, built and finished in our Coimbatore plants, so quality stays in our hands from raw wood to finished product.",
   },
   {
     id: "warranty",
     icon: "shield-check",
     title: "1-Year Warranty",
-    shortLine: "On every piece, standard",
     description:
-      "A full year's manufacture warranty comes standard, on everything from wardrobes to dining tables.",
+      "Every piece carries a one-year manufacturing warranty, from wardrobes to dining tables.",
   },
   {
     id: "real-homes",
     icon: "home",
     title: "Designed For Real Homes",
-    shortLine: "Built for Indian living",
     description:
-      "Our range is shaped around how Indian homes live, from compact 2-door wardrobes to modular sofa sets.",
+      "Compact 2-door wardrobes, sofa-cum-beds, modular sets: a range shaped around how families actually live.",
   },
   {
     id: "fair-pricing",
     icon: "tag",
     title: "Priced To Be Lived In",
-    shortLine: "Accessible, trend-aware",
     description:
-      "Priced to be lived in, so you're not choosing between good design and a fair price.",
+      "Good design shouldn’t stretch your budget. Settle is priced fairly, so you never have to choose between the two.",
   },
 ];

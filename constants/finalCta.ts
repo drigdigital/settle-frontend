@@ -9,9 +9,9 @@ import type { ClosingCtaContent } from "@/types/banner";
  */
 export const FINAL_CTA_CONTENT: ClosingCtaContent = {
   eyebrow: "Start With Settle",
-  heading: "Furniture that's ready when you are.",
+  heading: "Furniture that’s ready when you are.",
   subtext:
-    "Furnishing a home or stocking a showroom, either way there's a place to start. Explore the collection, or talk to us about bringing Settle into your store.",
+    "Furnishing a home or stocking a showroom, this is where it starts. Explore the collection, or talk to us about bringing Settle to your store.",
   primaryCta: { label: "Shop The Collection", href: "/collections" },
   secondaryCta: { label: "Get In Touch", href: "/contact" },
 };

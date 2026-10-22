@@ -7,9 +7,9 @@ import type { HeroContent, HeroSlide } from "@/types/hero";
 export const HERO_CONTENT: HeroContent = {
   headline: "Furniture that feels like home from day one.",
   subtext:
-    "We make wardrobes, sofas, cots and dining sets for real homes, every piece built in-house by Vaanam Furniture in Coimbatore. Nothing overpriced, nothing overdesigned, just furniture that holds up and looks good doing it.",
+    "Wardrobes, sofas, cots and dining sets, made in our own plants in Coimbatore. Solid construction, clean design and a fair price, so your home looks good and stays that way.",
   primaryCta: { label: "Shop The Collection", href: "/collections" },
-  secondaryCta: { label: "Find A Settle Dealer Near You", href: "/dealers" },
+  secondaryCta: { label: "Find A Settle Dealer", href: "/dealers" },
 };
 
 export const HERO_AUTOPLAY_MS = 6000;

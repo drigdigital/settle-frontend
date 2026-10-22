@@ -36,7 +36,7 @@ export const DEPARTMENT_CONTACTS: { department: Department; label: string; email
   },
   {
     department: "experience-center",
-    label: "Experience Center",
+    label: "Our Plants",
     email: "visit@settlefurniture.in",
   },
   { department: "support", label: "Customer Support", email: "hello@settlefurniture.in" },

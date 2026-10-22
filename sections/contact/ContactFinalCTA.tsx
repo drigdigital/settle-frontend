@@ -16,7 +16,7 @@ export function ContactFinalCTA() {
           className="text-center"
         >
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Settle Furniture. Always within reach.
+            Settle. Always within reach.
           </h2>
           <div className="mt-8">
             <a

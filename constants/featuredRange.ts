@@ -13,9 +13,8 @@ import type { RangeProduct } from "@/types/featuredRange";
  * lifestyle shoots by replacing the files (or `src`) and updating `alt`.
  */
 export const FEATURED_RANGE_CONTENT = {
-  heading: "More of the Settle range, on rotation.",
-  subtext:
-    "Ten pieces spanning every major Settle category, rotating in as new collections launch.",
+  heading: "Explore the Settle range.",
+  subtext: "Ten more pieces across wooden, modular and upholstered furniture.",
 } as const;
 
 export const FEATURED_RANGE_AUTOPLAY_MS = 5000;
@@ -25,7 +24,7 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     name: "Essen Bedroom Package",
     slug: "wardrobes-essen",
     categorySlug: "wardrobes",
-    category: "Bedroom",
+    category: "Modular",
     description:
       "Everything a bedroom needs in one matched set: 3D wardrobe, dressing unit, cot and bedside table, in Teak or Sand.",
     finishes: ["Teak", "Sand"],
@@ -38,7 +37,7 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     name: "Berlin Sofa",
     slug: "upholstered-sofas-berlin",
     categorySlug: "upholstered-sofas",
-    category: "Upholstery",
+    category: "Upholstered",
     line: "ECO",
     description:
       "From our Eco line: a short-rise 3+1+1 sofa set that keeps everyday comfort affordable.",
@@ -51,7 +50,7 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     name: "Marne Sofa",
     slug: "upholstered-sofas-marne",
     categorySlug: "upholstered-sofas",
-    category: "Upholstery",
+    category: "Upholstered",
     line: "PRIME",
     description:
       "Deep cushioning, Prime-line build, for whenever it's time to upgrade the centerpiece.",
@@ -64,7 +63,7 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     name: "Barcelona Sofa",
     slug: "upholstered-sofas-barcelona",
     categorySlug: "upholstered-sofas",
-    category: "Upholstery",
+    category: "Upholstered",
     line: "ULTRA",
     description:
       "Premium fabric, Ultra-line comfort, for a living room that leans a little upscale.",
@@ -77,7 +76,7 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     name: "Edinburgh Recliner",
     slug: "recliners-edinburgh",
     categorySlug: "recliners",
-    category: "Recliners",
+    category: "Upholstered",
     description:
       "A single-seater recliner chair, built for the one corner of the house reserved for doing absolutely nothing.",
     image: {
@@ -89,7 +88,7 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     name: "Stockholm Sofa Cum Bed",
     slug: "sofa-cum-beds-stockholm",
     categorySlug: "sofa-cum-beds",
-    category: "Sofa Cum Beds",
+    category: "Upholstered",
     description:
       "Adjustable back, 3-seater frame, built for homes where the space must work harder.",
     image: {
@@ -98,10 +97,10 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     },
   },
   {
-    name: 'Orlando "L" Corner Wooden Sofa',
+    name: "Orlando “L” Corner Wooden Sofa",
     slug: "wooden-sofas-orlando-l-corner",
     categorySlug: "wooden-sofas",
-    category: "Wooden Sofas",
+    category: "Wooden",
     description:
       "A carved wooden corner sofa, 3+3+C, sized for the living rooms that want a statement piece and have the space for it.",
     image: {
@@ -113,7 +112,7 @@ export const FEATURED_RANGE_PRODUCTS: RangeProduct[] = [
     name: "Brampton Wooden Cot",
     slug: "wooden-cots-brampton",
     categorySlug: "wooden-cots",
-    category: "Wooden Cots",
+    category: "Wooden",
     description:
       "Pull-out storage drawers built right into the frame, comfort and practicality sharing the same cot.",
     image: {

@@ -12,11 +12,10 @@ import { getCategoryBySlug } from "@/constants/categories";
  * admin dashboard holds real products. `services/products.ts` only reaches
  * for this when MONGODB_URI is unset — never imported by a component.
  *
- * PLACEHOLDER PHOTOGRAPHY — the five images below are stock photos that
- * resemble each product's description; they are not Settle product shots.
- * Barnet, Orlando (L Corner), Cairo, Brampton, Lindsay, Montreal and Garden
- * have no photo yet and show a "photo coming soon" panel. Replace with real
- * product photography (studio + lifestyle) via the admin dashboard.
+ * PLACEHOLDER PHOTOGRAPHY — every image below is a royalty-free stock photo
+ * (Unsplash License) chosen to resemble the product's description; none is a
+ * Settle product shot. Replace with real product photography (studio +
+ * lifestyle) via the admin dashboard before launch.
  */
 
 let idCounter = 1;
@@ -137,6 +136,10 @@ export const PLACEHOLDER_PRODUCTS: Product[] = [
       "An angular wooden-frame sofa set in a 3+1+1 configuration, with tufted cushioning.",
     highlights: ["Angular wooden frame", "Tufted cushioning"],
     configuration: "3+1+1",
+    image: {
+      url: "/images/showcase/barnet-wooden-sofa-living-room.jpg",
+      alt: "Tan cushioned three-seater sofa on a wooden base in a bright open-plan living room",
+    },
   }),
   seed({
     categorySlug: "wooden-sofas",
@@ -146,6 +149,10 @@ export const PLACEHOLDER_PRODUCTS: Product[] = [
     highlights: ["Carved wooden frame", "L-shaped corner layout"],
     configuration: "3+3+C",
     dimensionsText: `83.5" x 83.5" x 36"`,
+    image: {
+      url: "/images/featured-range/orlando-carved-wooden-sofa.jpg",
+      alt: "Carved wooden sofa with a red patterned cushion beneath an ornate gilt mirror",
+    },
   }),
   seed({
     categorySlug: "wooden-cots",
@@ -154,6 +161,10 @@ export const PLACEHOLDER_PRODUCTS: Product[] = [
     description: "Our hero cot design, with a decorative slatted headboard in solid seasoned wood.",
     highlights: ["Decorative slatted headboard"],
     material: "Solid seasoned wood",
+    image: {
+      url: "/images/featured-range/brampton-wooden-cot-bedroom.jpg",
+      alt: "Wooden cot with a slatted headboard, white bedding and a matching bedside table",
+    },
   }),
   seed({
     categorySlug: "wooden-cots",
@@ -161,6 +172,10 @@ export const PLACEHOLDER_PRODUCTS: Product[] = [
     tagline: "Elevate Your Furniture Aesthetics Effortlessly.",
     description: "A storage cot with pull-out drawers.",
     highlights: ["Pull-out storage drawers"],
+    image: {
+      url: "/images/hero/bedroom-wooden-cot-storage.jpg",
+      alt: "Walnut-finish wooden cot beside a wood-topped storage unit in a bright bedroom",
+    },
   }),
   seed({
     categorySlug: "dining-sets",
@@ -169,6 +184,10 @@ export const PLACEHOLDER_PRODUCTS: Product[] = [
     description: "An 8-seater dining set with a rectangle top.",
     highlights: ["8-seater", "Rectangle top"],
     configuration: "8-seater",
+    image: {
+      url: "/images/hero/dining-room-wooden-dining-set.jpg",
+      alt: "Long solid wood dining table with upholstered wooden chairs, facing a garden",
+    },
   }),
   seed({
     categorySlug: "dining-sets",
@@ -187,6 +206,10 @@ export const PLACEHOLDER_PRODUCTS: Product[] = [
     tagline: "The Lasting Impression of Craft.",
     description: "A rectangle wood-top dining table, pictured with a matching bench.",
     highlights: ["Rectangle wood top"],
+    image: {
+      url: "/images/gallery-dining.jpg",
+      alt: "Rectangle solid wood dining table with bentwood chairs beside a large window",
+    },
   }),
   seed({
     categorySlug: "dining-tables",
@@ -195,6 +218,10 @@ export const PLACEHOLDER_PRODUCTS: Product[] = [
     description: "A cross-leg dining table with an heirloom-style solid wood build.",
     highlights: ["Cross-leg base", "Heirloom-style solid wood build"],
     material: "Solid wood",
+    image: {
+      url: "/images/walkthrough-booking.jpg",
+      alt: "Wood-top dining table on a cross-leg base with mustard upholstered chairs",
+    },
   }),
   seed({
     categorySlug: "center-tables",

@@ -15,7 +15,7 @@ export function AnimatedSectionHeading({
   id: string;
   eyebrow: string;
   heading: string;
-  description: string;
+  description?: string;
   tone?: "navy" | "inverse";
 }) {
   return (

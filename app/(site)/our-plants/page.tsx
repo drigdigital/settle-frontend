@@ -14,16 +14,22 @@ import { breadcrumbSchema, buildMetadata, localBusinessSchema } from "@/lib/seo"
 import { StoreGallery } from "@/sections/experience-center/StoreGallery";
 import { VisitDetails } from "@/sections/experience-center/VisitDetails";
 
-export const metadata = buildMetadata({
-  title: "Experience Center",
-  description:
-    "Walk through Settle at the Experience Center inside Vaanam Furniture's Coimbatore facility: full room setups, real finishes, and walkthroughs by appointment.",
-  path: "/experience-center",
-});
+const PLANTS_TITLE = "Visit Our Plants | Settle Furniture, Coimbatore";
+
+// `absolute` skips the root layout's "%s | Settle Furnitures" template so the approved title renders as written.
+export const metadata = {
+  ...buildMetadata({
+    title: PLANTS_TITLE,
+    description:
+      "See where Settle is made. Book a plant walkthrough and visit our factory display center in Coimbatore.",
+    path: "/our-plants",
+  }),
+  title: { absolute: PLANTS_TITLE },
+};
 
 /**
- * Experience Center page: hero → store gallery → location & hours →
- * walkthrough booking → closing CTA, one focused screen each.
+ * Our Plants page (formerly /experience-center, which redirects here): hero → what you can
+ * see → location & hours → visit booking → closing CTA, one focused screen each.
  * [data-snap-page] opts this page into gentle scroll snapping
  * (app/globals.css). Content lives in constants/experienceCenterPage.ts.
  */
@@ -36,7 +42,7 @@ export default function ExperienceCenterPage() {
   });
   const breadcrumbs = breadcrumbSchema([
     { name: "Home", url: SITE_CONFIG.url },
-    { name: "Experience Center", url: `${SITE_CONFIG.url}/experience-center` },
+    { name: "Our Plants", url: `${SITE_CONFIG.url}/our-plants` },
   ]);
 
   return (
@@ -52,18 +58,18 @@ export default function ExperienceCenterPage() {
 
       <SplitHero
         content={EXPERIENCE_CENTER_HERO}
-        breadcrumbLabel="Experience Center"
+        breadcrumbLabel="Our Plants"
         headingId="experience-center-heading"
       />
       <StoreGallery content={STORE_GALLERY} />
       <VisitDetails content={VISIT_DETAILS} />
-      {/* id="book" is the target of the homepage banner's "Book A Visit" link. */}
+      {/* id="book" is the target of the homepage banner's "Plan A Plant Visit" link. */}
       <EnquirySection
         id="book"
         tone="paper"
         content={WALKTHROUGH_BOOKING}
         formType="walkthrough"
-        page="/experience-center"
+        page="/our-plants"
         image={WALKTHROUGH_BOOKING_IMAGE}
       />
       <ClosingCta content={EXPERIENCE_CENTER_CTA} className="snap-start" />

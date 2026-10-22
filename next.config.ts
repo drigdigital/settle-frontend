@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  async redirects() {
+    return [
+      // The Experience Center page was renamed Our Plants; keep old links and bookmarks working.
+      { source: "/experience-center", destination: "/our-plants", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

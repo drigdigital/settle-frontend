@@ -24,13 +24,14 @@ export function ProductsHero({
   content,
   mosaic,
   productCount,
-  categoryCount,
+  rangeCount,
 }: {
   content: ProductsHeroContent;
   /** Up to three products with photos, in display order. */
   mosaic: Product[];
   productCount: number;
-  categoryCount: number;
+  /** Number of range families (Wooden, Modular, Upholstered). */
+  rangeCount: number;
 }) {
   const { eyebrow, heading, intro, primaryCta, secondaryCta } = content;
 
@@ -83,8 +84,8 @@ export function ProductsHero({
               Products
             </span>
             <span>
-              <span className="block text-3xl font-semibold tracking-tight">{categoryCount}</span>
-              Categories
+              <span className="block text-3xl font-semibold tracking-tight">{rangeCount}</span>
+              Ranges
             </span>
           </motion.p>
 

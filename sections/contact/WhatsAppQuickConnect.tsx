@@ -7,8 +7,11 @@ import { SITE_CONFIG } from "@/constants/site";
 import { WhatsAppIcon } from "@/components/ui/icons";
 import { fadeUp, viewportOnce } from "@/lib/animations";
 
+// CLIENT TO CONFIRM — the primary email is still "[primary email]" in the content document, so none is shown yet.
+const PHONE = "+91 90421 12233";
+
 /**
- * WhatsApp Quick Connect, split out into its own section now that Location &
+ * "Talk to us directly": phone and WhatsApp quick connect, split out into its own section now that Location &
  * Map (sections/contact/LocationSection.tsx) has its own premium card
  * treatment and no longer shares a row with this block.
  */
@@ -27,10 +30,19 @@ export function WhatsAppQuickConnect() {
         >
           <SectionHeading
             align="center"
-            title="WhatsApp Quick Connect"
-            description="For quick questions, order status or a fast reply, message the Settle team directly on WhatsApp, no form required."
+            title="Talk to us directly"
+            description="Quick questions or order status, message us directly."
             className="mx-auto"
           />
+          <p className="text-muted mt-4 text-sm">
+            Phone:{" "}
+            <a
+              href={`tel:${PHONE.replace(/s/g, "")}`}
+              className="text-ink font-medium underline-offset-4 hover:underline"
+            >
+              {PHONE}
+            </a>
+          </p>
           <a
             href={whatsappHref}
             target="_blank"

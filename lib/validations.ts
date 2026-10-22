@@ -32,7 +32,9 @@ export const enquirySchema = z
     preferredTime: z.string().trim().optional().or(z.literal("")),
     // No empty-string fallback: these are <select>s, so they're either
     // unregistered (form types that don't mount the field) or a real value.
-    businessType: z.enum(["retailer", "new-business", "interior-design", "other"]).optional(),
+    businessType: z
+      .enum(["retailer", "distributor", "new-business", "interior-design", "other"])
+      .optional(),
     yearsInBusiness: z.string().trim().max(50).optional().or(z.literal("")),
     visitPurpose: z.enum(["personal", "dealer", "bulk-order"]).optional(),
     visitorCount: z.string().trim().max(10).optional().or(z.literal("")),

@@ -14,7 +14,7 @@ const OFFICE_PHONE = "+91 90421 12233";
 /**
  * Premium Location & Map card (components/shared/LocationMapCard), split out
  * of the old WhatsApp + Location ConnectSection so it reads as its own
- * focused, editorial section — see the Experience Center page's
+ * focused, editorial section — see the Our Plants page's
  * VisitDetails for the same card applied to that address.
  */
 export function LocationSection() {
@@ -22,7 +22,7 @@ export function LocationSection() {
     <section className="bg-paper py-section-sm">
       <Container>
         <LocationMapCard
-          description="Find us at Settle's Coimbatore office."
+          title="Find us"
           name={OFFICE_NAME}
           addressLines={OFFICE_ADDRESS_LINES}
           phone={OFFICE_PHONE}
