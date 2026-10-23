@@ -27,12 +27,6 @@ export const ABOUT_HERO: PageHeroContent = {
       line: "On Vaanam's own manufacturing floor",
     },
     {
-      id: "three-brands",
-      icon: "layers",
-      title: "One of three Vaanam brands",
-      line: "Alongside Chera and Kov",
-    },
-    {
       id: "real-homes",
       icon: "home",
       title: "For real, lived-in homes",

@@ -8,6 +8,7 @@ import { ViewportSection } from "@/components/shared/ViewportSection";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { ChevronRightIcon, FactoryIcon, HomeIcon, LayersIcon } from "@/components/ui/icons";
 import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
+import { cn } from "@/utils/cn";
 import type { PageHeroContent, PageHighlightIcon } from "@/types/page";
 
 const ICONS: Record<PageHighlightIcon, ComponentType<SVGProps<SVGSVGElement>>> = {
@@ -80,7 +81,10 @@ export function SplitHero({
           {highlights && highlights.length > 0 && (
             <motion.ul
               variants={fadeUp}
-              className="border-navy/10 mt-8 grid gap-4 border-t pt-6 sm:grid-cols-3"
+              className={cn(
+                "border-navy/10 mt-8 grid gap-4 border-t pt-6",
+                highlights.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-3",
+              )}
             >
               {highlights.map((highlight) => {
                 const Icon = ICONS[highlight.icon];
