@@ -6,7 +6,7 @@ import { fadeUp, viewportOnce, smoothScrollTo } from "@/lib/animations";
 
 export function ContactFinalCTA() {
   return (
-    <section className="border-border bg-ink py-section text-paper border-t">
+    <section className="surface-brand py-section text-paper">
       <Container>
         <motion.div
           variants={fadeUp}

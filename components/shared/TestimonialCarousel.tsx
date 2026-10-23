@@ -32,7 +32,7 @@ export function TestimonialCarousel({
       header={header}
       autoplayMs={autoplayMs}
       tone="navy"
-      controlsPosition="footer"
+      // controlsPosition="footer"
       slideClassName="basis-peek-1 sm:basis-fit-2 lg:basis-fit-3"
       itemsLabel="testimonials"
       focusableTrack

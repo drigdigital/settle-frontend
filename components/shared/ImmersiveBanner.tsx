@@ -11,12 +11,13 @@ import type { BannerMedia, ImmersiveBannerContent } from "@/types/banner";
 /**
  * Rounded full-width media banner with copy, CTAs and location chips on the left.
  *
- * Contrast is designed for the worst case, a pure-white frame of footage:
- * - From `lg`: navy runs 95% → 92% across the left 45%, then fades out. The
- *   copy column is capped (max-w-md at lg, max-w-xl at xl) so the gold
- *   eyebrow (needs 92%) and subtext (needs 75%) always sit in the dark zone.
- * - Below `lg`: the media shows through a window at the top, and the copy sits
- *   on a 92% navy panel that fades up into it.
+ * The photo shows in its own colours, with no tint. Contrast comes from a
+ * neutral ink scrim behind the copy only:
+ * - From `lg`: ink runs 85% → 60% across the left 45%, then fades out to
+ *   the clear photo. The copy column is capped (max-w-md at lg, max-w-xl at
+ *   xl) so the text always sits in the scrim.
+ * - Below `lg`: the photo shows clear at the top, and the copy sits on an 85%
+ *   ink panel that fades up into it.
  */
 export function ImmersiveBanner({
   content,
@@ -35,7 +36,7 @@ export function ImmersiveBanner({
   return (
     <div
       className={cn(
-        "surface-navy min-h-banner lg:min-h-banner-lg relative isolate flex flex-col overflow-hidden rounded-xl",
+        "surface-photo min-h-banner lg:min-h-banner-lg relative isolate flex flex-col overflow-hidden rounded-xl",
         className,
       )}
     >
@@ -43,19 +44,19 @@ export function ImmersiveBanner({
 
       <div
         aria-hidden="true"
-        className="bg-navy/30 lg:from-navy/95 lg:via-navy/92 lg:to-navy/0 absolute inset-0 -z-10 lg:bg-transparent lg:bg-linear-to-r lg:via-45%"
+        className="lg:from-ink/85 lg:via-ink/60 lg:to-ink/0 absolute inset-0 -z-10 lg:bg-linear-to-r lg:via-45%"
       />
 
       {/* Below `lg`: media window, then a fade into the copy panel. */}
       <div aria-hidden="true" className="min-h-40 flex-1 sm:min-h-64 lg:hidden" />
-      <div aria-hidden="true" className="from-navy/0 to-navy/92 h-16 bg-linear-to-b lg:hidden" />
+      <div aria-hidden="true" className="from-ink/0 to-ink/85 h-16 bg-linear-to-b lg:hidden" />
 
       <motion.div
         variants={staggerContainer(0.12)}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="bg-navy/92 flex flex-col px-6 pb-8 sm:px-10 sm:pb-10 lg:flex-1 lg:bg-transparent lg:p-12 xl:px-20"
+        className="bg-ink/85 flex flex-col px-6 pb-8 sm:px-10 sm:pb-10 lg:flex-1 lg:bg-transparent lg:p-12 xl:px-20"
       >
         <div className="max-w-xl lg:my-auto lg:max-w-md xl:max-w-xl">
           <motion.p
@@ -86,7 +87,7 @@ export function ImmersiveBanner({
                 href={location.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-paper/30 bg-navy/60 text-paper hover:bg-navy/80 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-md transition-colors duration-200"
+                className="border-paper/30 bg-ink/40 text-paper hover:bg-ink/60 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-md transition-colors duration-200"
               >
                 <PinIcon className="text-gold-light size-4" />
                 {location.label}
@@ -94,7 +95,7 @@ export function ImmersiveBanner({
               </a>
             )}
             {stat && (
-              <span className="border-gold/40 bg-navy/60 text-gold-light inline-flex items-center rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-md">
+              <span className="border-gold/40 bg-ink/40 text-gold-light inline-flex items-center rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-md">
                 {stat}
               </span>
             )}

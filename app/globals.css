@@ -118,12 +118,13 @@ body {
 }
 
 /*
- * The original navy panel (#1b2a4a), kept for the homepage Our Plants banner.
- * Restores the navy value inside the panel (the global `navy` token is now
- * the brand orange-brown), so its overlays and gold-button labels stay navy.
+ * Photo banner (homepage Our Plants): no colour tint, just the photo with a
+ * neutral ink scrim behind the copy. Dark ink shows only while media loads.
+ * Keeps gold-button labels navy (#1b2a4a), since the global `navy` token is
+ * now the brand orange-brown, which is too low-contrast on gold.
  */
-@utility surface-navy {
-  background-color: #1b2a4a;
+@utility surface-photo {
+  background-color: var(--color-ink);
   --color-navy: #1b2a4a;
   --focus-ring-color: var(--color-gold);
 }

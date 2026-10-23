@@ -148,7 +148,7 @@ export function BackgroundMedia({ media, className }: { media: BannerMedia; clas
           type="button"
           aria-label={`${isUserPaused ? "Play" : "Pause"} background ${mode === "video" ? "video" : "slideshow"}`}
           onClick={() => setIsUserPaused((paused) => !paused)}
-          className="border-paper/30 bg-navy/70 text-paper hover:bg-navy/90 absolute top-4 right-4 z-10 flex size-10 items-center justify-center rounded-full border backdrop-blur-md transition-colors duration-200"
+          className="border-paper/30 bg-ink/50 text-paper hover:bg-ink/70 absolute top-4 right-4 z-10 flex size-10 items-center justify-center rounded-full border backdrop-blur-md transition-colors duration-200"
         >
           {isUserPaused ? <PlayIcon /> : <PauseIcon />}
         </button>

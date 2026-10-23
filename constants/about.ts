@@ -137,7 +137,7 @@ export const ABOUT_STORIES: AboutStory[] = [
       },
     ],
     imageSide: "right",
-    tone: "navy",
+    tone: "paper",
   },
 ];
 

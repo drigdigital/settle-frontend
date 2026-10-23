@@ -2,10 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { Carousel } from "@/components/shared/Carousel";
 import { ViewportSection } from "@/components/shared/ViewportSection";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/animations";
 import { cn } from "@/utils/cn";
 import { rangeHref } from "@/utils/productFamily";
 import type { FamilySummary, SubcategorySummary } from "@/types/productFamily";
@@ -13,16 +12,21 @@ import type { SectionTone } from "@/types/page";
 
 const TONES: SectionTone[] = ["linen", "paper", "linen"];
 
+// Tile widths at 1.2 / 2.5 / 3.5 visible slides, capped by the 1440px container.
+const TILE_SIZES =
+  "(min-width: 1440px) 380px, (min-width: 1024px) 26vw, (min-width: 640px) 38vw, 82vw";
+
 function pieces(count: number): string {
   return `${count} ${count === 1 ? "piece" : "pieces"}`;
 }
 
 /**
  * Products page range overview: one screen per family (Wooden, Modular,
- * Upholstered) with its intro beside a grid of subcategory tiles. Each tile
- * opens the catalog below filtered to that subcategory; tiles with no
- * products yet show "Coming soon" and aren't links. Cover photos come from
- * the subcategory's own products, so they update as the admin adds photos.
+ * Upholstered), with its intro above a slider of subcategory tiles (arrows,
+ * swipe and ← / →, no autoplay). Each tile opens the catalog below filtered
+ * to that subcategory; tiles with no products yet show "Coming soon" and
+ * aren't links. Cover photos come from the subcategory's own products, so
+ * they update as the admin adds photos.
  */
 export function RangeFamilies({ families }: { families: FamilySummary[] }) {
   return (
@@ -36,53 +40,47 @@ export function RangeFamilies({ families }: { families: FamilySummary[] }) {
             tone={TONES[index % TONES.length]}
             labelledBy={headingId}
           >
-            <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
-              <motion.div
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOnce}
-                className="lg:col-span-4 lg:pt-2"
-              >
-                <p className="text-gold-deep text-sm font-semibold tracking-widest">
-                  {String(index + 1).padStart(2, "0")}
-                  <span className="text-muted ml-3 font-medium">{pieces(family.count)}</span>
-                </p>
-                <h2
-                  id={headingId}
-                  className="text-navy mt-3 text-4xl font-semibold tracking-tight sm:text-5xl"
-                >
-                  {family.name}
-                </h2>
-                <span aria-hidden="true" className="bg-gold mt-5 block h-px w-12" />
-                <p className="text-muted mt-5 max-w-md text-base leading-relaxed sm:text-lg">
-                  {family.description}
-                </p>
-                {family.count > 0 && (
-                  <Link
-                    href={rangeHref(family.id)}
-                    className="group/all text-navy mt-6 inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline"
+            <Carousel
+              label={`${family.name} range`}
+              slideLabels={family.subcategories.map((sub) => sub.name)}
+              itemsLabel={`${family.name} categories`}
+              autoplay={false}
+              header={
+                <div className="max-w-2xl">
+                  <p className="text-gold-deep text-sm font-semibold tracking-widest">
+                    {String(index + 1).padStart(2, "0")}
+                    <span className="text-muted ml-3 font-medium">{pieces(family.count)}</span>
+                  </p>
+                  <h2
+                    id={headingId}
+                    className="text-navy mt-3 text-4xl font-semibold tracking-tight sm:text-5xl"
                   >
-                    {`View all ${family.name}`}
-                    <ArrowRightIcon className="size-4 transition-transform duration-300 motion-safe:group-hover/all:translate-x-1" />
-                  </Link>
-                )}
-              </motion.div>
-
-              <motion.ul
-                variants={staggerContainer(0.08)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={viewportOnce}
-                className="grid grid-cols-2 gap-3 sm:gap-5 lg:col-span-8 xl:grid-cols-3"
-              >
-                {family.subcategories.map((subcategory) => (
-                  <motion.li key={subcategory.id} variants={fadeUp} className="flex">
-                    <SubcategoryTile familyId={family.id} subcategory={subcategory} />
-                  </motion.li>
-                ))}
-              </motion.ul>
-            </div>
+                    {family.name}
+                  </h2>
+                  <span aria-hidden="true" className="bg-gold mt-5 block h-px w-12" />
+                  <p className="text-muted mt-5 text-base leading-relaxed sm:text-lg">
+                    {family.description}
+                  </p>
+                  {family.count > 0 && (
+                    <Link
+                      href={rangeHref(family.id)}
+                      className="group/all text-navy mt-5 inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:underline"
+                    >
+                      {`View all ${family.name}`}
+                      <ArrowRightIcon className="size-4 transition-transform duration-300 motion-safe:group-hover/all:translate-x-1" />
+                    </Link>
+                  )}
+                </div>
+              }
+            >
+              {family.subcategories.map((subcategory) => (
+                <SubcategoryTile
+                  key={subcategory.id}
+                  familyId={family.id}
+                  subcategory={subcategory}
+                />
+              ))}
+            </Carousel>
           </ViewportSection>
         );
       })}
@@ -108,7 +106,7 @@ function SubcategoryTile({
             src={image.url}
             alt={image.alt}
             fill
-            sizes="(min-width: 1440px) 18rem, (min-width: 1024px) 28vw, 45vw"
+            sizes={TILE_SIZES}
             className="object-cover transition-transform duration-700 motion-safe:group-hover:scale-105"
           />
         ) : (

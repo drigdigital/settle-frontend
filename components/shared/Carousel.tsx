@@ -52,6 +52,8 @@ interface CarouselProps {
   slideLabels: string[];
   /** Heading block, laid out to the left of the controls. */
   header?: ReactNode;
+  /** Advance slides on a timer (default). false: arrows, swipe and keys only, with no pause button. */
+  autoplay?: boolean;
   autoplayMs?: number;
   tone?: keyof typeof TONE_CLASSES;
   /** "header": controls beside the heading. "footer": heading full width, controls under the track. */
@@ -93,6 +95,7 @@ export function Carousel({
   label,
   slideLabels,
   header,
+  autoplay = true,
   autoplayMs = 5000,
   tone = "ink",
   controlsPosition = "header",
@@ -119,7 +122,7 @@ export function Carousel({
   const slides = Children.toArray(children);
   const count = slides.length;
   const isScrollable = !(edges.atStart && edges.atEnd);
-  const canAutoplay = isScrollable && !prefersReducedMotion;
+  const canAutoplay = autoplay && isScrollable && !prefersReducedMotion;
   const isRunning = canAutoplay && isInView && !isUserPaused && !isHovered && !hasKeyboardFocus;
 
   /** Syncs edge state, the active slide and the progress bar with the scroll position. */

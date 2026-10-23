@@ -9,9 +9,11 @@ import {
   DEALERS_HERO,
   SUPPORT_STRUCTURE,
 } from "@/constants/dealers";
+import { DEALER_LOCATOR, DEALERS } from "@/constants/dealerLocator";
 import { DEPARTMENT_CONTACTS, SITE_CONFIG } from "@/constants/site";
 import { breadcrumbSchema, buildMetadata } from "@/lib/seo";
 import { DealerBenefits } from "@/sections/dealers/DealerBenefits";
+import { DealerLocator } from "@/sections/dealers/DealerLocator";
 
 const DEALER_CONTACT = DEPARTMENT_CONTACTS.find(
   (contact) => contact.department === "dealer-relations",
@@ -31,7 +33,7 @@ export const metadata = {
 
 /**
  * Dealers & Partners page: hero → dealer benefits → support structure →
- * application form → closing CTA, one focused screen each. [data-snap-page]
+ * application form → dealer locator → closing CTA, one focused screen each. [data-snap-page]
  * opts this page into gentle scroll snapping (app/globals.css). Content lives
  * in constants/dealers.ts.
  */
@@ -63,6 +65,8 @@ export default function DealersPage() {
         page="/dealers"
         contact={DEALER_CONTACT}
       />
+      {/* id="find-dealer" is the anchor for "Find A Dealer" links. */}
+      <DealerLocator id="find-dealer" content={DEALER_LOCATOR} dealers={DEALERS} />
       <ClosingCta content={DEALERS_CTA} className="snap-start" />
     </div>
   );
