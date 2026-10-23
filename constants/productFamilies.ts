@@ -12,7 +12,7 @@ import type { ProductFamily } from "@/types/productFamily";
  * (storage furniture, sized in feet like wardrobes) without descriptions.
  * Dining Chairs are grouped into "Dining Sets & Tables".
  *
- * PLACEHOLDER PHOTOGRAPHY — `coverImage` is a royalty-free stock photo shown
+ * PLACEHOLDER PHOTOGRAPHY — `coverImage` is a free-licence stock photo shown
  * on a tile only while none of its products has a photo. Replace with Settle
  * photography (or remove once products with photos exist).
  */
@@ -69,8 +69,25 @@ export const PRODUCT_FAMILIES: ProductFamily[] = [
         categorySlugs: ["wardrobes"],
         isPackage: true,
       },
-      { id: "study-tables", name: "Study Tables", categorySlugs: ["study-tables"] },
-      { id: "tv-units", name: "TV Units", categorySlugs: ["tv-units"] },
+      {
+        id: "study-tables",
+        name: "Study Tables",
+        categorySlugs: ["study-tables"],
+        coverImage: {
+          // Public-domain (CC0) photo via Rawpixel / Openverse.
+          url: "/images/products/study-table-wooden-desk.webp",
+          alt: "Wooden study table with a drawer, set with an open notebook, books and a pencil cup",
+        },
+      },
+      {
+        id: "tv-units",
+        name: "TV Units",
+        categorySlugs: ["tv-units"],
+        coverImage: {
+          url: "/images/gallery-living.jpg",
+          alt: "Low wooden media console beside a grey fabric sofa in a light-filled living room",
+        },
+      },
       { id: "shoe-racks", name: "Shoe Racks", categorySlugs: ["shoe-racks"] },
     ],
   },
